@@ -1,3 +1,5 @@
+'use strict';
+
 const getHobbies = (ctx, next) => {
   ctx.body = 'hello from getHobbies controller'
 }
