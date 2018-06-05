@@ -1,0 +1,26 @@
+{
+  "name": "find-a-hobby",
+  "version": "1.0.0",
+  "description": "Looking for a hobby? The find a hobby app will recommend the best hobbies for you!",
+  "main": "server/index.js",
+  "scripts": {
+    "main": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jportella93/find-a-hobby.git"
+  },
+  "author": "Jon Portella",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jportella93/find-a-hobby/issues"
+  },
+  "homepage": "https://github.com/jportella93/find-a-hobby#readme",
+  "dependencies": {
+    "koa": "^2.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
