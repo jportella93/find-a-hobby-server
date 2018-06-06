@@ -11,7 +11,7 @@ const bodyParser = require('koa-bodyparser');
 //Connect to mongodb
 require('./models/db')
 
-const port = 3000;
+const PORT = 3000;
 
 app
   .use(logger())
@@ -19,4 +19,4 @@ app
   .use(router.routes())
 
 app
-  .listen(port, console.log('Koa connected'))
+  .listen(PORT, console.log(`Server listening on port ${PORT}`))
