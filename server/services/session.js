@@ -1,5 +1,5 @@
 const generateUUID = require('uuid/v4');
-const sessions = {};
+const sessions = require('../models/sessions');
 
 const session = async (ctx, next) => {
 
@@ -26,7 +26,8 @@ const session = async (ctx, next) => {
     sessions[UUID] = {
       // username: ctx.request.body.username,
       sid: UUID,
-      timeOfLog: Date.now()
+      timeOfLog: Date.now(),
+      // seenHobbies: []
     };
 
   }

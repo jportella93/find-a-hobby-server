@@ -16,7 +16,8 @@ class Discover extends Component {
 
   setRandomHobbies = async () => {
     // TODO: create a seenHobbies array so to avoid showing the same hobby twice.
-    const randomHobbies = await fetchRandomHobbies()
+    let randomHobbies = await fetchRandomHobbies();
+    randomHobbies = randomHobbies.slice(0, numberOfCards);
     this.setState({hobbies: randomHobbies});
   }
 

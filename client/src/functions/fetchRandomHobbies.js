@@ -1,16 +1,19 @@
 import { URL } from '../index';
-import { numberOfCards } from '../components/Discover'
-import getRandomInt from './getRandomInt'
+// import { numberOfCards } from '../components/Discover'
+import getUniqRandomIntArr from './getUniqRandomIntArr'
 
 const fetchRandomHobbies = async () => {
-  let randomHobbies = [];
   let hobbies = await fetch(`${URL}/hobbies/all`);
+  hobbies = hobbies.json();
+  hobbies = await hobbies;
 
-  hobbies = hobbies.json()
-  hobbies = await hobbies
-
-  for (let i = 0; i < numberOfCards; i++) {
-    randomHobbies.push(hobbies[getRandomInt(0,numberOfCards)])
+  const hobbiesLGTH = hobbies.length;
+  const uniqRandomIntArr = getUniqRandomIntArr(hobbiesLGTH);
+  
+  let randomHobbies = [];
+  for (let i = 0; i < hobbiesLGTH; i++) {
+    randomHobbies.push(hobbies[uniqRandomIntArr[uniqRandomIntArr.length - 1]])
+    uniqRandomIntArr.pop();
   }
 
   return randomHobbies;
