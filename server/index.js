@@ -4,6 +4,7 @@ const app = new Koa();
 
 const logger = require('koa-logger');
 const bodyParser = require('koa-bodyparser');
+const cors = require('koa-cors');
 
 const router = require('./router');
 const session = require('./services/session')
@@ -17,6 +18,7 @@ app
   .use(logger())
   .use(session)
   .use(bodyParser())
+  .use(cors())
   .use(router.routes())
 
 app
