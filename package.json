@@ -24,7 +24,8 @@
     "koa-router": "^7.4.0",
     "mongoose": "^5.1.4",
     "raccoon": "^0.2.8",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^16.1.0",
