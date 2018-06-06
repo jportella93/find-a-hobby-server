@@ -31,8 +31,8 @@ const session = async (ctx, next) => {
 
   }
   ctx.session = sessions[UUID];
-  console.log('sessions:', sessions);
-  console.log('current session:', ctx.session);
+  // console.log('sessions:', sessions);
+  // console.log('current session:', ctx.session);
   await next();
 };
 
