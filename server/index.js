@@ -14,4 +14,6 @@ const port = 3000;
 app
   .use(bodyParser())
   .use(router.routes())
+
+app
   .listen(port, console.log('Koa connected'))

@@ -1,4 +1,4 @@
 'use strict';
 
 const mongoose = require('mongoose');
-module.exports = mongoose.connect('mongodb://localhost/find-a-hobby');
+module.exports = mongoose.connect('mongodb://localhost/find-a-hobby', console.log('mongoose connected'));
