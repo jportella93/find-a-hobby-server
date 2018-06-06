@@ -4,7 +4,9 @@ const Router = require('koa-router');
 const router = new Router();
 
 const hobbiesController = require('./controllers/hobbies.controller');
+const appController = require('./controllers/app.controller');
 
+router.get('/', appController.getIndex);
 router.get('/hobbies/all', hobbiesController.getAllHobbies);
 router.get('/hobbies/rec:user', hobbiesController.getRecHobbies);
 router.post('/hobbies', hobbiesController.postHobby);
