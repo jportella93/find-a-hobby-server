@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jportella93/find-a-hobby#readme",
   "dependencies": {
+    "create-react-app": "^1.5.2",
     "eslint": "^4.19.1",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.1",
