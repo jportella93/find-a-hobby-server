@@ -1,9 +1,11 @@
-'use strict';
-
-const Hobby = require('../models/hobby')
 
 
-const getHobbies = async (ctx, next) => {
+const raccoon = require('../services/raccoon');
+
+const Hobby = require('../models/hobby');
+
+
+const getAllHobbies = async (ctx, next) => {
   const hobbies = await Hobby.find();
   if (!hobbies) {
     console.log('no hobbies found');
@@ -13,21 +15,44 @@ const getHobbies = async (ctx, next) => {
   }
   ctx.body = hobbies;
   ctx.status = 200;
-}
+};
+
+const getRecHobbies = async (ctx, next) => {
+  const user = ctx.params.user.slice(1);
+
+  const recs = await raccoon.recommendFor(user, 10);
+  const recsMap = await Hobby.find({
+    _id: {
+      $in: recs,
+    },
+  });
+
+  ctx.body = recsMap;
+  ctx.status = 200;
+};
 
 const postHobby = async (ctx, next) => {
   const hobbyData = ctx.request.body;
 
-  const hobby = new Hobby ({
+  let hobby = await Hobby.findOne({ name: hobbyData.name });
+
+  if (hobby) {
+    ctx.status = 400;
+    ctx.body = 'There is already a hobby with that name';
+    return;
+  }
+
+
+  hobby = new Hobby({
     name:	hobbyData.name,
     description: hobbyData.description,
-    "links": hobbyData.links,
-    "tags": hobbyData.tags,
-    "pictures": hobbyData.pictures
-  })
+    links: hobbyData.links,
+    tags: hobbyData.tags,
+    pictures: hobbyData.pictures,
+  });
 
-// TODO: send response for post hobby endpoint. 
-  ctx.body = hobby.save((err,document) => {
+  // TODO: send response for post hobby endpoint.
+  ctx.body = hobby.save((err, document) => {
     if (err) {
       console.log('error in postHobby.controller:', err);
       ctx.status = 500;
@@ -36,10 +61,31 @@ const postHobby = async (ctx, next) => {
     ctx.status = 200;
     console.log(document);
     return document;
-  })
-}
+  });
+};
+
+const likeHobby = (ctx, next) => {
+  const userId = ctx.request.body.userId;
+  const hobbyId = ctx.request.body.hobbyId;
+
+  raccoon.liked(userId, hobbyId);
+
+  ctx.body = { userId, hobbyId };
+};
+
+const dislikeHobby = (ctx, next) => {
+  const userId = ctx.request.body.userId;
+  const hobbyId = ctx.request.body.hobbyId;
+
+  raccoon.disliked(userId, hobbyId);
+
+  ctx.body = { userId, hobbyId };
+};
 
 module.exports = {
-  getHobbies,
-  postHobby
+  getAllHobbies,
+  getRecHobbies,
+  postHobby,
+  likeHobby,
+  dislikeHobby,
 };
