@@ -4,8 +4,10 @@ const raccoon = require('../services/raccoon');
 
 const Hobby = require('../models/hobby');
 
+const getSessionId = require('./session.controller');
 
 const getAllHobbies = async (ctx, next) => {
+  const sessionId = getSessionId(ctx);
   const hobbies = await Hobby.find();
   if (!hobbies) {
     console.log('no hobbies found');
@@ -13,7 +15,9 @@ const getAllHobbies = async (ctx, next) => {
     ctx.status = 500;
     return;
   }
-  ctx.body = hobbies;
+  ctx.body = {
+    sessionId,
+    hobbies};
   ctx.status = 200;
 };
 
