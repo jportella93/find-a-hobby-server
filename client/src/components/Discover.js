@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Discover.css';
 import HobbyCard from './presentational/HobbyCard'
+import SwipeButtons from './presentational/SwipeButtons'
 import fetchRandomHobbies from '../functions/fetchRandomHobbies'
 
 export const numberOfCards = 3;
@@ -21,12 +22,22 @@ class Discover extends Component {
     this.setState({hobbies: randomHobbies});
   }
 
+  handleOnLike = () => {
+    console.log('❤️');
+  }
+
+  handleOnDislike = () => {
+    console.log('💔');
+  }
+
   render() {
     return (
       <div className="Discover">
         {this.state.hobbies.map(hobby => {
           return <HobbyCard key={hobby._id} hobby={hobby}/>
         })}
+        <SwipeButtons onLike={this.handleOnLike}
+          onDislike={this.handleOnDislike}/>
       </div>
     );
   }

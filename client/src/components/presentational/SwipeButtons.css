@@ -1,0 +1,60 @@
+@import url(https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
+@import url(https://use.fontawesome.com/releases/v5.0.13/css/all.css);
+
+.box{
+  width: 120px;
+  height: 120px;
+  /* font-size: 13px; */
+  /* display: block; */
+  border-radius: 100%;
+  position: fixed;
+}
+
+.like {
+  background: #61b812;
+  right: 10%;
+  margin: 0;
+  bottom: 7%;
+  position: fixed;
+}
+
+.dislike {
+  background: red;
+  left: 10%;
+  margin: 0;
+  bottom: 7%;
+  position: fixed;
+}
+
+a.box {
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: -webkit-transform 0.1s;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a.box:hover{
+	-webkit-transform: scale(1.05);
+}
+
+a.box:active{
+	-webkit-transform: scale(1);
+}
+
+i {
+  font-size: 60px;
+  text-align: center;
+  display: block;
+  margin-top: 10px; /* outside Codepen is actually 30px */
+  color:#fff;
+  font-family: "Open Sans", arial;
+  font-weight:300;
+   -webkit-font-smoothing:antialiased;
+   -moz-font-smoothing:antialiased;
+   -ms-font-smoothing:antialiased;
+   -o-font-smoothing:antialiased;
+   font-smoothing:antialiased;
+}

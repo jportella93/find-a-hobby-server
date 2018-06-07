@@ -1,0 +1,20 @@
+:root {
+  --img-size: 400px;
+}
+
+
+.HobbyCard {
+  position: fixed;
+  background-color: white;
+  left: 0;
+  right: 0;
+  margin: 5% auto;
+  padding: 5%;
+  width: var(--img-size);
+}
+
+.HobbyCard img {
+  object-fit:cover;
+  width: var(--img-size);
+  height: var(--img-size);
+}
