@@ -4,48 +4,57 @@ import HobbyCard from './presentational/HobbyCard'
 import SwipeButtons from './presentational/SwipeButtons'
 import FetchingHobbiesSpinner from './presentational/FetchingHobbiesSpinner'
 
-import fetchRandomHobbies from '../functions/fetchRandomHobbies'
-import discardSeenHobbies from '../functions/discardSeenHobbies'
-import fetchLikeHobby from '../functions/fetchLikeHobby'
-import fetchDislikeHobby from '../functions/fetchDislikeHobby'
-
-// import fetchSessionId from '../functions/fetchSessionId'
+import ApiClient from '../lib/apiClient';
+import discardSeenHobbies from '../functions/discardSeenHobbies';
+import filterHobby from '../functions/filterHobby';
+import getRandHobbyFilteredRec from '../functions/getRandHobbyFilteredRec';
 
 export const numberOfCards = 3;
 const neededCardsLeftToRefresh = 2;
+const neededCardsPriorRec = 1;
 
 class Discover extends Component {
   constructor (props) {
     super(props);
     this.state = {
       hobbies : [],
-      noHobbies: false,
+      noHobbies: false
     }
-    this.setRandomHobbies();
+    this.setHobbies();
   }
 
-  setRandomHobbies = async () => {
+  setHobbies = async () => {
     const hobbiesLGTH = this.state.hobbies.length
     if (hobbiesLGTH > neededCardsLeftToRefresh) return;
 
-    let randomHobbies = await fetchRandomHobbies();
+    let randomHobbies;
+    this.props.seenHobbies.length > neededCardsPriorRec
+    ? randomHobbies = await ApiClient.getRecommendedHobbies()
+    : randomHobbies = await ApiClient.getRandomHobbies();
+
+    // TODO: recomendation seems to work but it is repeating cards
+
+    randomHobbies = randomHobbies.slice(0, numberOfCards)
+    // console.log(randomHobbies);
+
     const seenHobbies = [...this.props.seenHobbies, ...this.state.hobbies];
+
     randomHobbies = discardSeenHobbies(randomHobbies, seenHobbies);
-    randomHobbies = randomHobbies.slice(0, numberOfCards);
 
     this.setState({hobbies: [...randomHobbies, ...this.state.hobbies]});
+
   }
 
   handleOnLike = () => {
     // console.log(this.state.hobbies);
     let hobbies = this.state.hobbies;
     if (hobbies.length < 1) return;
-    const hobby = hobbies[hobbies.length-1]
-    fetchLikeHobby(hobby._id)
+    const hobby = hobbies[hobbies.length-1];
+    ApiClient.likeHobbie(hobby._id)
     this.props.passLikedHobby(hobby)
     hobbies.pop();
     this.setState({hobbies});
-    this.setRandomHobbies();
+    this.setHobbies();
     this.handleNoHobbies();
   }
 
@@ -53,11 +62,11 @@ class Discover extends Component {
     let hobbies = this.state.hobbies;
     if (hobbies.length < 1) return;
     const hobby = hobbies[hobbies.length-1]
-    fetchDislikeHobby(hobby._id)
+    ApiClient.dislikeHobbie(hobby._id)
     this.props.passDislikedHobby(hobby)
     hobbies.pop();
     this.setState({hobbies});
-    this.setRandomHobbies();
+    this.setHobbies();
     this.handleNoHobbies();
   }
 

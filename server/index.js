@@ -7,7 +7,8 @@ const bodyParser = require('koa-bodyparser'); //original
 const cors = require('koa-cors'); //original
 
 const router = require('./router');
-const session = require('./services/session')
+// const session = require('./services/session')
+const jwt = require('./services/jwt')
 
 //Connect to mongodb
 require('./models/db')
@@ -20,11 +21,16 @@ const corsOptions = {
    };
 
 app
+  .use(cors())
   .use(logger())
-  .use(session)
+  .use(jwt)
   .use(bodyParser())
-  .use(cors(corsOptions))
   .use(router.routes())
 
 app
   .listen(PORT, console.log(`Server listening on port ${PORT}`))
+
+
+
+
+  // TODO: store images somewhere, right now is working with image links

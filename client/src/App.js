@@ -4,7 +4,7 @@ import Discover from './components/Discover'
 import List from './components/List'
 import Navbar from './components/presentational/Navbar'
 
-// import fetchSessionId from './functions/fetchSessionId'
+import ApiClient from './lib/apiClient';
 
 class App extends Component {
   constructor (props) {
@@ -13,14 +13,11 @@ class App extends Component {
       likedHobbies: [],
       dislikedHobbies: [],
       seenHobbies: [],
-      currentView: 'Discover'
+      currentView: 'Discover',
+      // recommending: false
     }
   }
 
-  // getSessionId = async () => {
-  //   // const fetchedSId = await fetchSessionId();
-  //   // this.setState({sId:fetchedSId})
-  // }
   setHobbyAsSeen = (hobby) => {
     this.setState({seenHobbies: [...this.state.seenHobbies, hobby]})
   }
@@ -39,13 +36,23 @@ class App extends Component {
     this.setState({currentView})
   }
 
+  // turnRecomendOn = () => {
+  //   if (this.state.seenHobbies.length > 3) {
+  //     this.setState({recommending: true})
+  //     console.log('recommending On!');
+  //   }
+  // }
+
   render() {
     let view;
     switch (this.state.currentView) {
       case 'Discover':
         view = (<Discover passLikedHobby={this.passLikedHobby}
           passDislikedHobby={this.passDislikedHobby}
-          seenHobbies={this.state.seenHobbies}/>)
+          seenHobbies={this.state.seenHobbies}
+          // turnRecomendOn={this.turnRecomendOn}
+          // recommending={this.state.recommending}
+                />)
         break;
       case 'List':
         view = (<List hobbies={this.state.likedHobbies}/>)

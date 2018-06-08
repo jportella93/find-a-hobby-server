@@ -13,12 +13,16 @@ const getAllHobbies = async (ctx, next) => {
     return;
   }
   ctx.body = hobbies;
-  ctx.headers = {'Access-Control-Allow-Credentials': 'true'}
-  ctx.status = 200;
 };
+
+const getRandomHobbie = async (ctx, next) => {
+  const hobbies = await Hobby.find();
+  ctx.body = hobbies[Math.floor(Math.random()*hobbies.length)];
+}
 
 const getRecHobbies = async (ctx, next) => {
   const user = ctx.params.user.slice(1);
+  // console.log('----user of the recom:',user);
 
   const recs = await raccoon.recommendFor(user, 10);
   const recsMap = await Hobby.find({
@@ -65,8 +69,7 @@ const postHobby = async (ctx, next) => {
 };
 
 const likeHobby = (ctx, next) => {
-// BUG: sessionID is changing with every request
-  const userId = ctx.session.sid;
+  const userId = ctx.token;
   const hobbyId = ctx.request.body.hobbyId;
   // console.log('--userId:', userId);
   // console.log('--hobbyId:', hobbyId);
@@ -77,10 +80,10 @@ const likeHobby = (ctx, next) => {
 };
 
 const dislikeHobby = (ctx, next) => {
-  const userId = ctx.session.sid;
+  const userId = ctx.token;
   const hobbyId = ctx.request.body.hobbyId;
-  console.log('--userId:', userId);
-  console.log('--hobbyId:', hobbyId);
+  // console.log('--userId:', userId);
+  // console.log('--hobbyId:', hobbyId);
 
   raccoon.disliked(userId, hobbyId);
 
@@ -89,6 +92,7 @@ const dislikeHobby = (ctx, next) => {
 
 module.exports = {
   getAllHobbies,
+  getRandomHobbie,
   getRecHobbies,
   postHobby,
   likeHobby,
