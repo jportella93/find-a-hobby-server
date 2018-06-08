@@ -1,5 +1,4 @@
 import { URL } from '../index';
-// import { numberOfCards } from '../components/Discover'
 import getUniqRandomIntArr from './getUniqRandomIntArr'
 
 const fetchRandomHobbies = async () => {
@@ -11,13 +10,13 @@ const fetchRandomHobbies = async () => {
   // console.log(hobbies);
 
   const hobbiesLGTH = hobbies.length;
-  const uniqRandomIntArr = getUniqRandomIntArr(hobbiesLGTH);
+  const randArr = getUniqRandomIntArr(hobbiesLGTH);
 
   let randomHobbies = [];
   for (let i = 0; i < hobbiesLGTH; i++) {
     // console.log(randomHobbies);
-    randomHobbies.push(hobbies[uniqRandomIntArr[uniqRandomIntArr.length - 1]])
-    uniqRandomIntArr.pop();
+    randomHobbies.push(hobbies[randArr[randArr.length - 1]])
+    randArr.pop();
   }
 
   // console.log(randomHobbies);

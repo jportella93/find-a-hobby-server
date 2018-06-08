@@ -1,0 +1,13 @@
+:root {
+}
+
+
+.Navbar {
+}
+
+.Navbar button {
+  width: 100px;
+  height: 50px;
+  margin: 10px 20px 0 20px;
+  border: steelblue;
+}

@@ -68,10 +68,10 @@ const likeHobby = (ctx, next) => {
 // BUG: sessionID is changing with every request
   const userId = ctx.session.sid;
   const hobbyId = ctx.request.body.hobbyId;
-  console.log('--userId:', userId);
-  console.log('--hobbyId:', hobbyId);
+  // console.log('--userId:', userId);
+  // console.log('--hobbyId:', hobbyId);
 
-  // raccoon.liked(userId, hobbyId);
+  raccoon.liked(userId, hobbyId);
 
   ctx.body = { userId, hobbyId };
 };

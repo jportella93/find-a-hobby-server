@@ -1,0 +1,21 @@
+:root {
+  --img-width: 350px;
+  --img-height: 100px;
+}
+
+a {
+  text-decoration: none
+}
+
+.HobbyMiniCard {
+  padding: 5px;
+  margin: 10px;
+  background-color: #FAFA9A;
+  width: var(--img-width);
+}
+
+.HobbyMiniCard img {
+  object-fit:cover;
+  width: var(--img-width);
+  height: var(--img-height);
+}
