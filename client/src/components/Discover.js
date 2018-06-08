@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Discover.css';
 import HobbyCard from './presentational/HobbyCard'
 import SwipeButtons from './presentational/SwipeButtons'
+import FetchingHobbiesSpinner from './presentational/FetchingHobbiesSpinner'
 
 import fetchRandomHobbies from '../functions/fetchRandomHobbies'
 import discardSeenHobbies from '../functions/discardSeenHobbies'
@@ -17,7 +18,8 @@ class Discover extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      hobbies : []
+      hobbies : [],
+      noHobbies: false,
     }
     this.setRandomHobbies();
   }
@@ -37,22 +39,31 @@ class Discover extends Component {
   handleOnLike = () => {
     // console.log(this.state.hobbies);
     let hobbies = this.state.hobbies;
+    if (hobbies.length < 1) return;
     const hobby = hobbies[hobbies.length-1]
     fetchLikeHobby(hobby._id)
     this.props.passLikedHobby(hobby)
     hobbies.pop();
     this.setState({hobbies});
     this.setRandomHobbies();
+    this.handleNoHobbies();
   }
 
   handleOnDislike = () => {
     let hobbies = this.state.hobbies;
+    if (hobbies.length < 1) return;
     const hobby = hobbies[hobbies.length-1]
     fetchDislikeHobby(hobby._id)
     this.props.passDislikedHobby(hobby)
     hobbies.pop();
     this.setState({hobbies});
     this.setRandomHobbies();
+    this.handleNoHobbies();
+  }
+
+  handleNoHobbies = () => {
+    if (this.state.hobbies.length !== 0) return;
+    this.setState({noHobbies: true})
   }
 
   render() {
@@ -62,8 +73,10 @@ class Discover extends Component {
         {this.state.hobbies.map(hobby => {
           return <HobbyCard key={hobby._id} hobby={hobby}/>
         })}
-        <SwipeButtons onLike={this.handleOnLike}
-          onDislike={this.handleOnDislike}/>
+        {this.state.noHobbies
+          ? <FetchingHobbiesSpinner />
+          : <SwipeButtons onLike={this.handleOnLike}
+            onDislike={this.handleOnDislike}/>}
       </div>
     );
   }

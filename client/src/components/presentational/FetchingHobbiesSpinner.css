@@ -1,0 +1,27 @@
+/*
+FIDGET SPINNER LOADER PRO
+by free potato tree
+https://codepen.io/arxyz/pen/NMYEyX?page=4
+*/
+
+:root {
+}
+
+
+.FetchingHobbiesSpinner {
+}
+
+/* body{
+  background: #43515f;
+  display:flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+} */
+.nig{
+  position: relative;
+  height: 50px;
+  width: 50px;
+  margin-top: 200px;
+  /* background-color: black; */
+}
