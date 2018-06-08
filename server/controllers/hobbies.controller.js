@@ -4,10 +4,7 @@ const raccoon = require('../services/raccoon');
 
 const Hobby = require('../models/hobby');
 
-const getSessionId = require('./session.controller');
-
 const getAllHobbies = async (ctx, next) => {
-  const sessionId = getSessionId(ctx);
   const hobbies = await Hobby.find();
   if (!hobbies) {
     console.log('no hobbies found');
@@ -15,9 +12,8 @@ const getAllHobbies = async (ctx, next) => {
     ctx.status = 500;
     return;
   }
-  ctx.body = {
-    sessionId,
-    hobbies};
+  ctx.body = hobbies;
+  ctx.headers = {'Access-Control-Allow-Credentials': 'true'}
   ctx.status = 200;
 };
 
@@ -69,17 +65,22 @@ const postHobby = async (ctx, next) => {
 };
 
 const likeHobby = (ctx, next) => {
-  const userId = ctx.request.body.userId;
+// BUG: sessionID is changing with every request
+  const userId = ctx.session.sid;
   const hobbyId = ctx.request.body.hobbyId;
+  console.log('--userId:', userId);
+  console.log('--hobbyId:', hobbyId);
 
-  raccoon.liked(userId, hobbyId);
+  // raccoon.liked(userId, hobbyId);
 
   ctx.body = { userId, hobbyId };
 };
 
 const dislikeHobby = (ctx, next) => {
-  const userId = ctx.request.body.userId;
+  const userId = ctx.session.sid;
   const hobbyId = ctx.request.body.hobbyId;
+  console.log('--userId:', userId);
+  console.log('--hobbyId:', hobbyId);
 
   raccoon.disliked(userId, hobbyId);
 

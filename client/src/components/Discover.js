@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import './Discover.css';
 import HobbyCard from './presentational/HobbyCard'
 import SwipeButtons from './presentational/SwipeButtons'
+
 import fetchRandomHobbies from '../functions/fetchRandomHobbies'
+import fetchLikeHobby from '../functions/fetchLikeHobby'
+import fetchDislikeHobby from '../functions/fetchDislikeHobby'
+
+import fetchSessionId from '../functions/fetchSessionId'
 
 export const numberOfCards = 3;
 
@@ -19,15 +24,26 @@ class Discover extends Component {
     // TODO: create a seenHobbies array so to avoid showing the same hobby twice.
     let randomHobbies = await fetchRandomHobbies();
     randomHobbies = randomHobbies.slice(0, numberOfCards);
+    // console.log('random hobbies:',randomHobbies);
     this.setState({hobbies: randomHobbies});
+    // console.log('state hobbies:',this.state.hobbies);
   }
 
   handleOnLike = () => {
-    console.log('❤️');
+    // console.log(this.state.hobbies);
+    let hobbies = this.state.hobbies;
+    const hobby = hobbies[hobbies.length-1]._id
+    fetchLikeHobby(hobby)
+    hobbies.pop();
+    this.setState({hobbies});
   }
 
   handleOnDislike = () => {
-    console.log('💔');
+    let hobbies = this.state.hobbies;
+    const hobby = hobbies[hobbies.length-1]._id
+    fetchDislikeHobby(hobby)
+    hobbies.pop();
+    this.setState({hobbies});
   }
 
   render() {
