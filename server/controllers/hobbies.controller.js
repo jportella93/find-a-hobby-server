@@ -57,7 +57,7 @@ const postHobby = async (ctx, next) => {
   });
 
   // TODO: send response for post hobby endpoint.
-  ctx.body = hobby.save((err, document) => {
+  ctx.body = await hobby.save((err, document) => {
     if (err) {
       console.log('error in postHobby.controller:', err);
       ctx.status = 500;
@@ -67,7 +67,7 @@ const postHobby = async (ctx, next) => {
     // console.log(document);
     return document;
   });
-  ctx.body = hobbyData; //erase me
+  // ctx.body = await JSON.stringify(hobbyData); //erase me
 };
 
 const likeHobby = (ctx, next) => {

@@ -1,5 +1,9 @@
 :root {
   --img-size: 400px;
+  --card-height: 600px;
+  --color1: yellow;
+  --color2: cyan;
+  --color3: magenta;
 }
 
 
@@ -11,9 +15,35 @@
   margin: 5% auto;
   padding: 5%;
   width: var(--img-size);
+  height: var(--card-height);
+}
+
+.colorHolder {
+  width: var(--img-size);
+  height: var(--card-height);
+  display: grid;
+  grid-template-columns: 20% 30% auto;
+  position: absolute;
+  z-index: -100;
+}
+
+.colorBar {
+}
+
+.color1 {
+  background-color: var(--color1);
+}
+
+.color2 {
+  background-color: var(--color2);
+}
+
+.color3 {
+  background-color: var(--color3);
 }
 
 .HobbyCard img {
+  padding-top: 10px;
   object-fit:cover;
   width: var(--img-size);
   height: var(--img-size);

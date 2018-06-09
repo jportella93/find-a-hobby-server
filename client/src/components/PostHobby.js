@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import apiClient from '../lib/apiClient';
+import './PostHobby.css';
 
 class PostHobby extends Component {
   constructor (props) {
@@ -9,21 +10,65 @@ class PostHobby extends Component {
       description: '',
       getStarted: '',
       picture: '',
-      money: false,
-      fit: false,
-      creative: false,
+      bars: {
+        money: 0,
+        fit: 0,
+        creative: 0,
+      },
+      totalValue: 100
     }
   }
 
   handleInputChange = (event) => {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.value;
     const name = target.name;
 
     this.setState({
       [name]: value
     });
-}
+  }
+
+  handleBarsChange = (event) => {
+    // Thanks Jack!!!
+    const target = event.target
+    this.setState({
+      bars: {
+        ...this.state.bars,
+        [target.name]: Number(target.value)
+      }
+    }, () => {
+      const bars = Object.keys(this.state.bars)
+      const sum = bars.reduce((acc, el) => this.state.bars[el] + acc, 0)
+      const remainder = sum - this.state.totalValue
+      const division = remainder / (bars.length - 1)
+      let flag = bars.every(el => el !== 0)
+
+      const updateBars = bars
+        .filter(el => el !== target.name)
+        .reduce((acc, el) => {
+          if (this.state.bars[el] === 0) acc[el] = 0
+          else if (flag) acc[el] = this.state.bars[el] - division
+          else acc[el] = this.state.bars[el] - remainder
+          return acc
+        }, {})
+      this.setState({
+        bars: {
+          ...this.state.bars,
+          ...updateBars
+        }
+      })
+    })
+    console.log(event.target);
+    console.log(event.target.type);
+    console.log(event.target.value);
+  }
+
+  formatBarValues = (barValue) => {
+    //taking care of edge cases
+    if (barValue < 0) return 0;
+    return barValue
+  }
 
   handleSubmit = (event) => {
     const hobby = this.state;
@@ -41,16 +86,16 @@ class PostHobby extends Component {
       	},
       tags: [
         {name:"money",
-    		votes: hobby.money ? 1 : 0,
-    		average: hobby.money ? 100 : 0
+    		votes: 1,
+    		average: this.formatBarValues(hobby.bars.money)
     		},
     		{name:"fit",
-        votes: hobby.fit ? 1 : 0,
-    		average: hobby.fit ? 100 : 0
+        votes: 1,
+    		average: this.formatBarValues(hobby.bars.fit)
     		},
     		{name:"creative",
-        votes: hobby.creative ? 1 : 0,
-    		average: hobby.creative ? 100 : 0
+        votes: 1,
+    		average: this.formatBarValues(hobby.bars.creative)
 		    },
       ]
     }
@@ -75,12 +120,12 @@ class PostHobby extends Component {
           <br />
           <label>
             Description:
-            <input
-              name="description"
-              type="text"
-              value={this.state.description}
-              onChange={this.handleInputChange} />
           </label>
+          <input
+            name="description"
+            type="text"
+            value={this.state.description}
+            onChange={this.handleInputChange} />
           <br />
           <label>
             Link to get started:
@@ -102,29 +147,35 @@ class PostHobby extends Component {
           <br />
           <label>
             Money:
-            <input
-              name="money"
-              type="checkbox"
-              checked={this.state.money}
-              onChange={this.handleInputChange} />
           </label>
+          <input
+            name="money"
+            type="range"
+            min="0"
+            max="100"
+            value={this.state.bars.money}
+            onChange={this.handleBarsChange} />
           <br />
           <label>
             Fit:
             <input
               name="fit"
-              type="checkbox"
-              checked={this.state.fit}
-              onChange={this.handleInputChange} />
+              type="range"
+              min="0"
+              max="100"
+              value={this.state.bars.fit}
+              onChange={this.handleBarsChange} />
           </label>
           <br />
           <label>
             Creative:
             <input
               name="creative"
-              type="checkbox"
-              checked={this.state.creative}
-              onChange={this.handleInputChange} />
+              type="range"
+              min="0"
+              max="100"
+              value={this.state.bars.creative}
+              onChange={this.handleBarsChange} />
           </label>
           <br />
           <input type="submit" value="Submit" />
@@ -133,7 +184,6 @@ class PostHobby extends Component {
     )
   }
 }
-
 //
 // {
 // 	"name":	"Tea",

@@ -1,0 +1,7 @@
+.PostHobby form {
+  text-align: left;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
