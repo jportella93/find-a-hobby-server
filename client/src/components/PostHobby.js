@@ -73,7 +73,7 @@ class PostHobby extends Component {
   handleSubmit = (event) => {
     const hobby = this.state;
 
-// TODO: handle edge cases when all fields are not filled or vaild.
+// TODO: Fix sliders not showing on mobile.
     const formattedHobby = {
       name: hobby.name,
       description: hobby.description,
@@ -111,6 +111,7 @@ class PostHobby extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:
+            <br />
             <input
               name="name"
               type="text"
@@ -121,6 +122,7 @@ class PostHobby extends Component {
           <label>
             Description:
           </label>
+          <br />
           <input
             name="description"
             type="text"
@@ -129,55 +131,65 @@ class PostHobby extends Component {
           <br />
           <label>
             Link to get started:
-            <input
-              name="getStarted"
-              type="text"
-              value={this.state.getStarted}
-              onChange={this.handleInputChange} />
           </label>
+          <br />
+          <input
+            name="getStarted"
+            type="text"
+            value={this.state.getStarted}
+            onChange={this.handleInputChange} />
           <br />
           <label>
             Link to picture:
-            <input
-              name="picture"
-              type="text"
-              value={this.state.picture}
-              onChange={this.handleInputChange} />
           </label>
           <br />
-          <label>
-            Money:
-          </label>
           <input
-            name="money"
-            type="range"
-            min="0"
-            max="100"
-            value={this.state.bars.money}
-            onChange={this.handleBarsChange} />
+            name="picture"
+            type="text"
+            value={this.state.picture}
+            onChange={this.handleInputChange} />
           <br />
-          <label>
-            Fit:
+          <div className="tag-sliders">
+            <label className='money-label'>
+              <i className="fas fa-dollar-sign"></i>
+            </label>
+            {/* <br /> */}
+            <input
+              name="money"
+              type="range"
+              className="range-input"
+              min="0"
+              max="100"
+              value={this.state.bars.money}
+              onChange={this.handleBarsChange} />
+            <br />
+            <label className='fit-label'>
+              <i className="fas fa-football-ball"></i>
+            </label>
+            {/* <br /> */}
             <input
               name="fit"
               type="range"
+              className="range-input"
               min="0"
               max="100"
               value={this.state.bars.fit}
               onChange={this.handleBarsChange} />
-          </label>
-          <br />
-          <label>
-            Creative:
+            <br />
+            <label className='creative-label'>
+              <i className="fab fa-fly"></i>
+            </label>
+            {/* <br /> */}
             <input
               name="creative"
               type="range"
+              className="range-input"
               min="0"
               max="100"
               value={this.state.bars.creative}
               onChange={this.handleBarsChange} />
-          </label>
-          <br />
+            <br />
+          </div>
           <input type="submit" value="Submit" />
         </form>
       </div>

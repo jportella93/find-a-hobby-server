@@ -3,7 +3,6 @@ import './App.css';
 import Discover from './components/Discover'
 import List from './components/List'
 import PostHobby from './components/PostHobby'
-import PostHobbyNew from './components/PostHobbyNew'
 import Navbar from './components/presentational/Navbar'
 
 import ApiClient from './lib/apiClient';
@@ -60,11 +59,14 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Navbar changeView={this.changeView} />
+        <Navbar changeView={this.changeView}
+          currentView={this.state.currentView}/>
         {view}
       </div>
     );
   }
 }
+
+// TODO: refractor css with @import '../main.css' to DRY
 
 export default App;

@@ -13,9 +13,17 @@ class Navbar extends Component {
   render() {
     return (
       <div className="Navbar">
-        <button onClick={() => this.props.changeView('PostHobby')}>Post Hobby</button>
-        <button onClick={() => this.props.changeView('Discover')}>Discover</button>
-        <button onClick={() => this.props.changeView('List')}>List</button>
+        <button className="PostHobby" onClick={() => this.props.changeView('PostHobby')}
+          style={{'visibility': this.props.currentView === 'PostHobby'? 'hidden' : 'visible'}}
+        >Post Hobby</button>
+
+        <button className="Discover" onClick={() => this.props.changeView('Discover')}
+          style={{'visibility': this.props.currentView === 'Discover'? 'hidden' : 'visible'}}
+        >Dicover</button>
+
+        <button className="List" onClick={() => this.props.changeView('List')}
+          style={{'visibility': this.props.currentView === 'List'? 'hidden' : 'visible'}}
+        >List</button>
       </div>
     );
   }

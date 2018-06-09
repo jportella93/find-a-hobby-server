@@ -34,8 +34,6 @@ class Discover extends Component {
     ? randomHobbies = await ApiClient.getRecommendedHobbies()
     : randomHobbies = await ApiClient.getRandomHobbies();
 
-    // TODO: recomendation seems to work but it is repeating cards
-
     randomHobbies = randomHobbies.slice(0, numberOfCards)
 
     const seenHobbies = [...this.props.seenHobbies, ...this.state.hobbies];

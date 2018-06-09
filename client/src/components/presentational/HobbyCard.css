@@ -1,37 +1,68 @@
+@import url(https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
+@import url(https://use.fontawesome.com/releases/v5.0.13/css/all.css);
+
 :root {
   --img-size: 400px;
   --card-height: 600px;
-  --color1: yellow;
-  --color2: cyan;
-  --color3: magenta;
+  --color1: #FDC63F;
+  --color2: #090B4D;
+  --color3: #F90005;
+  --p2-color1: yellow;
+  --p2-color2: cyan;
+  --p2-color3: magenta;
 }
 
 
 .HobbyCard {
   position: fixed;
-  background-color: white;
   left: 0;
   right: 0;
-  margin: 5% auto;
-  padding: 5%;
+  margin: 10px auto 0 auto;
+  /* padding: 5%; */
   width: var(--img-size);
-  height: var(--card-height);
+  height: 650px;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 14px 23px 2px rgba(0,0,0,0.08);
+  -moz-box-shadow: 0px 14px 23px 2px rgba(0,0,0,0.08);
+  box-shadow: 0px 14px 23px 2px rgba(0,0,0,0.08);
+  border-radius: 15px;
+  color: white;
+}
+
+.colorHolderWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: var(--img-size);
+  border-bottom: solid white 3px
 }
 
 .colorHolder {
   width: var(--img-size);
-  height: var(--card-height);
+  height: 570px;
   display: grid;
   grid-template-columns: 20% 30% auto;
   position: absolute;
   z-index: -100;
+  overflow: hidden;
+  border-radius: 0 0 10px 10px;
 }
 
 .colorBar {
 }
 
+.topBar {
+  padding-bottom: 10px;
+}
+
 .color1 {
   background-color: var(--color1);
+}
+
+.color1.topBar {
+  /* border-radius: 20px 0 0 0; */
+}
+.color3.topBar {
+  /* border-radius: 0 20px 0 0; */
 }
 
 .color2 {
@@ -43,8 +74,17 @@
 }
 
 .HobbyCard img {
-  padding-top: 10px;
   object-fit:cover;
-  width: var(--img-size);
+  width: calc(var(--img-size) - 20px);
   height: var(--img-size);
+  margin-top: 10px;
+}
+
+.HobbyCard h1 {
+  margin: 10px 0 0 0;
+}
+
+.HobbyCard p {
+  margin: 10px 0 0 0;
+  padding: 10px;
 }

@@ -5,11 +5,11 @@
 .Navbar {
   display: flex;
   justify-content: space-around;
+  margin-top: 10px;
 }
 
 .Navbar button {
   width: 80px;
   height: 50px;
-  margin-top: 20px;
   border-radius: 15%;
 }
