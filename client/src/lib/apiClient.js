@@ -25,7 +25,7 @@ const apiFetch = (path, originalOptions = {}, ...rest) => {
 const getRandomHobbie = () => apiFetch('/hobbies/random');
 
 const getRandomHobbies = async () => {
-  console.log('token:', token);
+  // console.log('token:', token);
   let hobbies = await apiFetch('/hobbies/all');
   // console.log('----',hobbies);
 
@@ -44,7 +44,7 @@ const getRandomHobbies = async () => {
 
 const getRecommendedHobbies = async () => {
   let hobbies = await apiFetch(`/hobbies/rec:${token}`);
-  console.log('----recommended hobbies:',hobbies);
+  console.log('now fetching recommended hobbies');
 
   return hobbies;
 }
@@ -62,9 +62,20 @@ const likeHobbie = (hobbyId) => {
 
 const dislikeHobbie = (hobbyId) => {
   hobbyId = JSON.stringify({hobbyId})
-  return fetch(`${URL}/hobbies/dislike`, {
+  return apiFetch(`/hobbies/dislike`, {
     method: 'PUT',
     body: hobbyId,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+}
+
+const postHobby = (hobby) => {
+  hobby = JSON.stringify(hobby)
+  return apiFetch(`/hobbies`, {
+    method: 'POST',
+    body: hobby,
     headers: {
       'Content-Type': 'application/json'
     }
@@ -77,4 +88,5 @@ export default {
   getRecommendedHobbies,
   likeHobbie,
   dislikeHobbie,
+  postHobby,
 };

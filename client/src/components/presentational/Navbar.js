@@ -13,6 +13,7 @@ class Navbar extends Component {
   render() {
     return (
       <div className="Navbar">
+        <button onClick={() => this.props.changeView('PostHobby')}>Post Hobby</button>
         <button onClick={() => this.props.changeView('Discover')}>Discover</button>
         <button onClick={() => this.props.changeView('List')}>List</button>
       </div>

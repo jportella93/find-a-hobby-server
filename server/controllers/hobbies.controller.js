@@ -37,15 +37,16 @@ const getRecHobbies = async (ctx, next) => {
 
 const postHobby = async (ctx, next) => {
   const hobbyData = ctx.request.body;
+  // console.log(hobbyData);
 
   let hobby = await Hobby.findOne({ name: hobbyData.name });
 
   if (hobby) {
+    console.log('name already taken');
     ctx.status = 400;
-    ctx.body = 'There is already a hobby with that name';
-    return;
+    // ctx.body = 'There is already a hobby with that name';
+    // return;
   }
-
 
   hobby = new Hobby({
     name:	hobbyData.name,
@@ -60,12 +61,13 @@ const postHobby = async (ctx, next) => {
     if (err) {
       console.log('error in postHobby.controller:', err);
       ctx.status = 500;
-      return 'error in postHobby.controller:';
+      throw new Error (err);
     }
     ctx.status = 200;
-    console.log(document);
+    // console.log(document);
     return document;
   });
+  ctx.body = hobbyData; //erase me
 };
 
 const likeHobby = (ctx, next) => {

@@ -23,6 +23,8 @@ class Discover extends Component {
     this.setHobbies();
   }
 
+  // BUG: when going to List view and coming back to discover view, hobbies are gone
+
   setHobbies = async () => {
     const hobbiesLGTH = this.state.hobbies.length
     if (hobbiesLGTH > neededCardsLeftToRefresh) return;
@@ -35,12 +37,12 @@ class Discover extends Component {
     // TODO: recomendation seems to work but it is repeating cards
 
     randomHobbies = randomHobbies.slice(0, numberOfCards)
-    // console.log(randomHobbies);
 
     const seenHobbies = [...this.props.seenHobbies, ...this.state.hobbies];
 
     randomHobbies = discardSeenHobbies(randomHobbies, seenHobbies);
 
+    console.log('setting new hobbies:',randomHobbies);
     this.setState({hobbies: [...randomHobbies, ...this.state.hobbies]});
 
   }

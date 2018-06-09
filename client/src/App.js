@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Discover from './components/Discover'
 import List from './components/List'
+import PostHobby from './components/PostHobby'
 import Navbar from './components/presentational/Navbar'
 
 import ApiClient from './lib/apiClient';
@@ -14,7 +15,6 @@ class App extends Component {
       dislikedHobbies: [],
       seenHobbies: [],
       currentView: 'Discover',
-      // recommending: false
     }
   }
 
@@ -36,29 +36,25 @@ class App extends Component {
     this.setState({currentView})
   }
 
-  // turnRecomendOn = () => {
-  //   if (this.state.seenHobbies.length > 3) {
-  //     this.setState({recommending: true})
-  //     console.log('recommending On!');
-  //   }
-  // }
-
   render() {
     let view;
     switch (this.state.currentView) {
       case 'Discover':
-        view = (<Discover passLikedHobby={this.passLikedHobby}
+        view = <Discover passLikedHobby={this.passLikedHobby}
           passDislikedHobby={this.passDislikedHobby}
           seenHobbies={this.state.seenHobbies}
           // turnRecomendOn={this.turnRecomendOn}
           // recommending={this.state.recommending}
-                />)
+                />
         break;
       case 'List':
-        view = (<List hobbies={this.state.likedHobbies}/>)
+        view = <List hobbies={this.state.likedHobbies}/>
+        break;
+      case 'PostHobby':
+        view = <PostHobby />
         break;
       default:
-      view = (<h1>Default view</h1>);
+      view = <h1>Default view</h1>;
     }
 
     return (

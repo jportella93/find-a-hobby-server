@@ -3,11 +3,13 @@
 
 
 .Navbar {
+  display: flex;
+  justify-content: space-around;
 }
 
 .Navbar button {
-  width: 100px;
+  width: 80px;
   height: 50px;
-  margin: 10px 20px 0 20px;
-  border: steelblue;
+  margin-top: 20px;
+  border-radius: 15%;
 }

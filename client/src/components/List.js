@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import HobbyMiniCard from './presentational/HobbyMiniCard'
 
 class List extends Component {
-  // constructor (props) {
+  // constructor (props) {  
   //   super(props);
   //   this.state = {
   //     hobbies : []
