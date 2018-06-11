@@ -9,7 +9,3 @@ $ mongod
 
 in a diferent terminal window:
 $ npm run main
-
-in a diferent terminal window:
-$ cd client
-$ npm run start
