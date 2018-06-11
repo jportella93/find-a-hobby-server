@@ -6,7 +6,6 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  width: 100%;
   margin: 30px;
 }
 
@@ -16,8 +15,49 @@
   color: black;
 }
 
+input[type=text] {
+  border: none;
+  border-bottom: solid 1px gray;
+}
+
+input[type=text]:active, :focus {
+  outline:none
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* background: #fff; */
+  height: 18px;
+  width: 18px;
+  margin-top: -8px;
+  border-radius: 99px;
+}
+
+input[type=range][name=money]::-webkit-slider-thumb {
+  background: var(--color1);
+}
+input[type=range][name=fit]::-webkit-slider-thumb {
+  background: var(--color2);
+}
+input[type=range][name=creative]::-webkit-slider-thumb {
+  background: var(--color3);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 4px;
+  background: #ddd;
+}
+
 input[type="submit"] {
   width: 100px;
+  border: solid 1px gray;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .tag-sliders {
@@ -27,29 +67,30 @@ input[type="submit"] {
 }
 
 .money-label {
-  background-color: #FDC63F;
-  padding: 10px 0;
+  background-color: var(--color1);
+  padding: 20px 0;
   border-radius: 15px;
   width: 100px;
+  height: 100px;
   text-align: center;
 }
 
 .fit-label {
-  background-color: #090B4D;
-  padding: 10px 0;
+  background-color: var(--color2);
+  padding: 20px 0;
   border-radius: 15px;
   width: 100px;
   text-align: center;
 }
 
 .creative-label {
-  background-color: #F90005;
-  padding: 10px 0;
+  background-color: var(--color3);
+  padding: 20px 0;
   border-radius: 15px;
   width: 100px;
   text-align: center;
 }
 
-input.range-input {
-
+.PostHobby i {
+  margin: 0;
 }

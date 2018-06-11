@@ -109,42 +109,31 @@ class PostHobby extends Component {
     return (
       <div className="PostHobby">
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <br />
-            <input
-              name="name"
-              type="text"
-              value={this.state.name}
-              onChange={this.handleInputChange} />
-          </label>
           <br />
-          <label>
-            Description:
-          </label>
+          <input
+            name="name"
+            placeholder="Name"
+            type="text"
+            value={this.state.name}
+            onChange={this.handleInputChange} />
           <br />
           <input
             name="description"
+            placeholder="Description"
             type="text"
             value={this.state.description}
             onChange={this.handleInputChange} />
           <br />
-          <label>
-            Link to get started:
-          </label>
-          <br />
           <input
             name="getStarted"
+            placeholder="Link to get started tutorial"
             type="text"
             value={this.state.getStarted}
             onChange={this.handleInputChange} />
           <br />
-          <label>
-            Link to picture:
-          </label>
-          <br />
           <input
             name="picture"
+            placeholder="Link to picture"
             type="text"
             value={this.state.picture}
             onChange={this.handleInputChange} />
@@ -196,51 +185,5 @@ class PostHobby extends Component {
     )
   }
 }
-//
-// {
-// 	"name":	"Tea",
-// 	"description": "Bodyweight exercises are strength training exercises that do not require free weights or machines as the individual's own weight provides resistance against gravity.",
-// 	"links": {
-// 		"getStarted":"https://www.reddit.com/r/bodyweightfitness/wiki/kb/recommended_routine"
-// 	},
-// 	"tags": [
-// 		{"name":"money",
-// 		"votes": 0,
-// 		"average": 0
-// 		},
-// 		{"name":"fit",
-// 			"votes": 1,
-// 			"average": 100
-// 		},
-// 		{"name":"creative",
-// 			"votes": 1,
-// 			"average": 20
-// 		},
-// 		{"name":"indoor",
-// 			"votes": 1,
-// 			"average": 50
-// 		},
-// 		{"name":"solo",
-// 			"votes": 1,
-// 			"average": 50
-// 		},
-// 		{"name":"cheap",
-// 			"votes": 1,
-// 			"average": 100
-// 		},
-// 		{"name":"relaxing",
-// 			"votes": 1,
-// 			"average": 40
-// 		},
-// 		{"name":"common",
-// 			"votes": 1,
-// 			"average": 60
-// 		}
-// 	],
-// 	"pictures": {
-// 		"thumbnail": "https://images.ecosia.org/pCE0HtU4DKEKaz19fF17FGU-XXo=/0x390/smart/https%3A%2F%2Fpioneerwoman.files.wordpress.com%2F2016%2F05%2Fhow-to-make-sweet-tea-01.jpg",
-// 		"big": "https://images.ecosia.org/pCE0HtU4DKEKaz19fF17FGU-XXo=/0x390/smart/https%3A%2F%2Fpioneerwoman.files.wordpress.com%2F2016%2F05%2Fhow-to-make-sweet-tea-01.jpg"
-// 	}
-// }
 
 export default PostHobby;
