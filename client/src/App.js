@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import Logo from './components/presentational/Logo'
+import Presentation from './components/presentational/Presentation'
 import Discover from './components/Discover'
 import List from './components/List'
 import PostHobby from './components/PostHobby'
@@ -14,8 +16,10 @@ class App extends Component {
       likedHobbies: [],
       dislikedHobbies: [],
       seenHobbies: [],
-      currentView: 'Discover',
+      currentView: 'Logo',
+      newUser: true,
     }
+    this.watchForNewUser();
   }
 
   setHobbyAsSeen = (hobby) => {
@@ -36,16 +40,37 @@ class App extends Component {
     this.setState({currentView})
   }
 
+  watchForNewUser = () => {
+    const token = window.localStorage.token;
+    if (token) this.state = ({
+      ...this.state,
+      newUser: false
+    });
+  }
+
+  changeViewAfterLogo = () => {
+    console.log('hey');
+    this.state.newUser
+    ? this.setState({currentView: 'Presentation'})
+    : this.setState({currentView: 'Discover'})
+  }
+
+
+
   render() {
     let view;
     switch (this.state.currentView) {
+      case 'Logo':
+      view = <Logo handleClick={this.changeViewAfterLogo} />
+      break;
+      case 'Presentation':
+        view = <Presentation handleClick={() => this.changeView('Discover')}/>
+        break;
       case 'Discover':
         view = <Discover passLikedHobby={this.passLikedHobby}
           passDislikedHobby={this.passDislikedHobby}
           seenHobbies={this.state.seenHobbies}
-          // turnRecomendOn={this.turnRecomendOn}
-          // recommending={this.state.recommending}
-                />
+               />
         break;
       case 'List':
         view = <List hobbies={this.state.likedHobbies}/>
@@ -54,13 +79,17 @@ class App extends Component {
         view = <PostHobby />
         break;
       default:
-      view = <h1>Default view</h1>;
+      view = <h1>Oops something went wrong!</h1>
     }
 
     return (
       <div className="App">
-        <Navbar changeView={this.changeView}
-          currentView={this.state.currentView}/>
+        {this.state.currentView === 'Presentation' ||
+          this.state.currentView === 'Logo'
+            ? null
+          : <Navbar changeView={this.changeView}
+            currentView={this.state.currentView}/>
+        }
         {view}
       </div>
     );

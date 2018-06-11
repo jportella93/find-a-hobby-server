@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url(https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
+@import url(https://use.fontawesome.com/releases/v5.0.13/css/all.css);
+
+.Presentation-wrapper {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
+
+.PresentationWrapper-colorHolder {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.PresentationWrapper-colorBar {
+  height: -webkit-fill-available;
+}
+.Presentation-wrapper.color1 {
+  background-color: var(--color1)
+}
+.Presentation-wrapper.color2 {
+  background-color: var(--color2)
+}
+.Presentation-wrapper.color3 {
+  background-color: var(--color3)
+}
+
+.Presentation {
+  position: fixed;
+  top: 13%;
+  left: 0;
+  right: 0;
+}
+
+.Presentation h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 65px;
+  color: white;
+}
+
+.Presentation h3 {
+  color: white;
+  /* line-height: 3; */
+  font-style: italic;
+}
+
+.hobbyName {
+  font-weight: bold;
+}

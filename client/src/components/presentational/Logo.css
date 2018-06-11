@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+.Logo-wrapper {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
+
+.LogoWrapper-colorHolder {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.LogoWrapper-colorBar {
+  height: -webkit-fill-available;
+}
+.Logo-wrapper.color1 {
+  background-color: var(--color1)
+}
+.Logo-wrapper.color2 {
+  background-color: var(--color2)
+}
+.Logo-wrapper.color3 {
+  background-color: var(--color3)
+}
+
+
+.Logo {
+  position: fixed;
+  top: 30%;
+  left: 0;
+  right: 0;
+}
+
+.Logo h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 65px;
+  color: white;
+}
