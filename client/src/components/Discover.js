@@ -23,8 +23,6 @@ class Discover extends Component {
     this.setHobbies();
   }
 
-  // BUG: when going to List view and coming back to discover view, hobbies are gone
-
   setHobbies = async () => {
     const hobbiesLGTH = this.state.hobbies.length
     if (hobbiesLGTH > neededCardsLeftToRefresh) return;
@@ -76,7 +74,6 @@ class Discover extends Component {
   }
 
   render() {
-    // console.log('rendering discover with state:', this.state);
     return (
       <div className="Discover">
         {this.state.hobbies.map(hobby => {
@@ -90,5 +87,8 @@ class Discover extends Component {
     );
   }
 }
+
+// BUG: when going to List view and coming back to discover view, hobbies are gone
+// TODO: add message "no more hobbies available, maybe post a hobby?"
 
 export default Discover;

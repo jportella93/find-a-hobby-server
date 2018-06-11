@@ -18,4 +18,6 @@ class Logo extends Component {
   }
 }
 
+// TODO: add number of hobbies available in database under the logo.
+
 export default Logo;

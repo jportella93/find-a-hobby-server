@@ -3,19 +3,7 @@ import './List.css'
 import HobbyMiniCard from './presentational/HobbyMiniCard'
 
 class List extends Component {
-  // constructor (props) {
-  //   super(props);
-  //   this.state = {
-  //     hobbies : []
-  //   }
-    // this.setHobbiesFromProps();
-  // }
-
-  // setHobbiesFromProps = () => {
-  //   if (!this.props.hobbies) return;
-  //   this.state = {hobbies: this.props.hobbies}
-  // }
-
+// TODO: add message: no hobbies liked yet
   render() {
     return (
       <div className="List">
