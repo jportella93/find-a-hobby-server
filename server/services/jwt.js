@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const uuid = require('uuid/v4');
 
-const secret = 'enuncortijograndeelqueestontosemueredehambre';
+const secret = process.env.JWT_SECRET;
 
 const createToken = () => jwt.sign({
   uuid: uuid()
