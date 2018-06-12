@@ -13,6 +13,6 @@ raccoon.config.localRedisURL = '127.0.0.1'; // local redis url
 raccoon.config.remoteRedisPort = process.env.REDIS_PORT || 12000; // remote redis port
 raccoon.config.remoteRedisURL = process.env.REDIS_URL; // remote redis url
 raccoon.config.remoteRedisAuth = process.env.REDIS_AUTH; // remote redis auth
-raccoon.config.localSetup = false // IMPORTANT. whether you want to use local or remote databases
+raccoon.config.localSetup = false; // IMPORTANT. whether you want to use local or remote databases
 
 module.exports = raccoon;
