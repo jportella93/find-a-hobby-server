@@ -15,7 +15,7 @@ const jwt = require('./services/jwt')
 //Connect to mongodb
 require('./models/db')
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000
 
 const corsOptions = {
      origin: true,
