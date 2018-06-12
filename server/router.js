@@ -9,6 +9,7 @@ const sessionController = require('./controllers/session.controller');
 
 router.get('/', appController.getIndex);
 router.get('/hobbies/all', hobbiesController.getAllHobbies);
+router.get('/hobbies/seen', hobbiesController.getSeenHobbies);
 router.get('/hobbies/random', hobbiesController.getRandomHobbie);
 router.get('/hobbies/rec:user', hobbiesController.getRecHobbies);
 router.post('/hobbies', hobbiesController.postHobby);

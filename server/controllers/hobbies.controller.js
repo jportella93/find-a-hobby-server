@@ -33,6 +33,11 @@ const getRecHobbies = async (ctx, next) => {
   ctx.status = 200;
 };
 
+const getSeenHobbies = async (ctx,next) => {
+  // const userId = ctx.request.body;
+  // // TODO: this
+}
+
 const postHobby = async (ctx, next) => {
   const hobbyData = ctx.request.body;
   // console.log(hobbyData);
@@ -94,6 +99,7 @@ const dislikeHobby = (ctx, next) => {
 
 module.exports = {
   getAllHobbies,
+  getSeenHobbies,
   getRandomHobbie,
   getRecHobbies,
   postHobby,
