@@ -38,36 +38,38 @@ const getRecHobbies = async (ctx, next) => {
 const postHobby = async (ctx, next) => {
   const hobbyData = ctx.request.body;
   // console.log(hobbyData);
+  // TODO: Response is not arriving to client properly.
 
-  let hobby = await Hobby.findOne({ name: hobbyData.name });
-
-  if (hobby) {
-    console.log('name already taken');
-    ctx.status = 400;
-    // ctx.body = 'There is already a hobby with that name';
-    // return;
-  }
-
-  hobby = new Hobby({
-    name:	hobbyData.name,
-    description: hobbyData.description,
-    links: hobbyData.links,
-    tags: hobbyData.tags,
-    pictures: hobbyData.pictures,
-  });
-
-  // TODO: send response for post hobby endpoint.
-  ctx.body = await hobby.save((err, document) => {
-    if (err) {
-      console.log('error in postHobby.controller:', err);
-      ctx.status = 500;
-      throw new Error (err);
+  try {
+    let hobby = await Hobby.findOne({ name: hobbyData.name });
+    console.log('===', hobby);
+    if (hobby) {
+      ctx.status = 400;
+      ctx.body = JSON.stringify({
+        status: 'error',
+        message: 'There is already a hobby with that name'
+      });
+    } else {
+      console.log('===new hobby');
+      hobby = new Hobby({
+        name:	hobbyData.name,
+        description: hobbyData.description,
+        links: hobbyData.links,
+        tags: hobbyData.tags,
+        pictures: hobbyData.pictures,
+      });
+      const savedHobby = await hobby.save()
+      if (savedHobby.length) {
+        ctx.status = 201;
+        ctx.body = JSON.stringify({
+          status: 'success',
+          data: savedHobby
+        });
+      }
     }
-    ctx.status = 200;
-    // console.log(document);
-    return document;
-  });
-  // ctx.body = await JSON.stringify(hobbyData); //erase me
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const likeHobby = (ctx, next) => {

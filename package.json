@@ -5,7 +5,10 @@
   "main": "server/index.js",
   "scripts": {
     "main": "nodemon server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
@@ -36,7 +39,9 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
+    "jest": "^23.1.0",
     "koa-logger": "^3.2.0",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.17.5",
+    "supertest": "^3.1.0"
   }
 }

@@ -27,10 +27,8 @@ app
   .use(bodyParser())
   .use(router.routes())
 
-app
-  .listen(PORT, console.log(`Server listening on port ${PORT}`))
-
-
+const server = app.listen(PORT).on('error', err => console.log(err))
 
 
   // TODO: store images somewhere, right now is working with image links
+module.exports = server;
