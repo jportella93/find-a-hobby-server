@@ -5,10 +5,6 @@ raccoon.config.nearestNeighbors = 5; // number of neighbors you want to compare 
 raccoon.config.className = 'hobby'; // prefix for your items (used for redis)
 raccoon.config.numOfRecsStore = 30; // number of recommendations to store per user
 
-raccoon.config.localRedisPort = 6379; // local redis port
-raccoon.config.localRedisURL = process.env.REDIS_URL || '127.0.0.1'; // local redis url
-raccoon.config.remoteRedisPort = process.env.REDIS_PORT || 12000; // remote redis port
-raccoon.config.remoteRedisURL = process.env.REDIS_HOST; // remote redis url
-raccoon.config.remoteRedisAuth = process.env.REDIS_AUTH; // remote redis auth
+// raccoon.config.remoteRedisURL = process.env.REDIS_URL // remote redis url
 
 module.exports = raccoon;
