@@ -27,7 +27,7 @@ const getRecHobbies = async (ctx, next) => {
   const recs = await raccoon.recommendFor(user, 10);
   const recsMap = await Hobby.find({
     _id: {
-      $in: recs,
+      $in: recs, 
     },
   });
 
