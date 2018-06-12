@@ -4,34 +4,11 @@ const raccoon = require('raccoon');
 raccoon.config.nearestNeighbors = 5; // number of neighbors you want to compare a user against
 raccoon.config.className = 'hobby'; // prefix for your items (used for redis)
 raccoon.config.numOfRecsStore = 30; // number of recommendations to store per user
-raccoon.config.numOfRecsStore = 30; // number of recommendations to store per user
 
-raccoon.config.remoteRedisURL = process.env.REDIS_URL // remote redis url
+raccoon.config.localRedisPort = 6379; // local redis port
+raccoon.config.localRedisURL = '127.0.0.1'; // local redis url
+raccoon.config.remoteRedisPort = process.env.REDIS_PORT || 12000; // remote redis port
+raccoon.config.remoteRedisURL = process.env.REDIS_HOST; // remote redis url
+raccoon.config.remoteRedisAuth = process.env.REDIS_AUTH; // remote redis auth
 
 module.exports = raccoon;
-
-// const mocks = {
-//   users: [
-//     { name: 'Jim' },
-//     { name: 'David' },
-//     { name: 'Sara' },
-//     { name: 'Ana' },
-//   ],
-//   hobbies: [
-//     { name: 'Rubik' },
-//     { name: 'Butterfly catching' },
-//     { name: 'Pick-locking' },
-//     { name: 'Polishing aluminium balls' },
-//   ],
-// };
-//
-// raccoon.liked('jim', 'rubik')
-//   .then(() => raccoon.liked('jim', 'butterflies'))
-//   .then(() => raccoon.liked('louis', 'rubik'))
-//   .then(() => raccoon.recommendFor('louis', 10))
-//   .then(recs => console.log(recs));
-//
-//
-// raccoon.liked('jhon', 'rubik')
-//   .then(() => raccoon.recommendFor('jhon', 10))
-//   .then(recs => console.log(recs));
