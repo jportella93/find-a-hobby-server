@@ -7,7 +7,8 @@ const app = new Koa();
 
 const logger = require('koa-logger');
 const bodyParser = require('koa-bodyparser'); // original
-const cors = require('koa-cors'); // original
+// const cors = require('koa-cors'); // original
+const cors = require('@koa/cors');
 
 const router = require('./router');
 // const session = require('./services/session')
@@ -18,11 +19,6 @@ require('./models/db');
 
 const PORT = process.env.PORT || 3000;
 
-const corsOptions = {
-  origin: true,
-  credentials: true,
-};
-
 app
   .use(cors())
   .use(logger())
@@ -32,7 +28,7 @@ app
 
 const server = app.listen(
   PORT,
-  console.log(`find a Hobby! Server connected on http://localhost:${PORT}`),
+  console.log(`find a Hobby! Server connected on port ${PORT}`),
 )
   .on('error', err => console.log(err));
 
