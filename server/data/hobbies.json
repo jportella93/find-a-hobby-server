@@ -1,0 +1,312 @@
+[
+  {
+    "name": "Photography",
+    "description": "Capture moments and express creativity through visual storytelling. Learn composition, lighting, and post-processing techniques to create stunning images.",
+    "links": [
+      {
+        "title": "Photography Basics Guide",
+        "url": "https://www.photographylife.com/photography-basics"
+      },
+      {
+        "title": "Free Online Photography Course",
+        "url": "https://www.coursera.org/learn/photography-basics"
+      },
+      {
+        "title": "Photography Community",
+        "url": "https://www.reddit.com/r/photography/"
+      }
+    ],
+    "tags": [
+      { "name": "creative" },
+      { "name": "outdoor" },
+      { "name": "technical" },
+      { "name": "equipment" }
+    ],
+    "pictures": [
+      {
+        "url": "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400",
+        "alt": "Camera setup on tripod"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400",
+        "alt": "Landscape photography"
+      }
+    ]
+  },
+  {
+    "name": "Gardening",
+    "description": "Grow your own food and flowers while connecting with nature. Learn about soil, plants, seasons, and sustainable gardening practices.",
+    "links": [
+      {
+        "title": "Beginner's Gardening Guide",
+        "url": "https://www.almanac.com/gardening"
+      },
+      {
+        "title": "Organic Gardening Tips",
+        "url": "https://www.organicgardening.com/"
+      },
+      { "title": "Gardening Forum", "url": "https://forum.gardeners.com/" }
+    ],
+    "tags": [
+      { "name": "outdoor" },
+      { "name": "relaxing" },
+      { "name": "sustainable" },
+      { "name": "seasonal" }
+    ],
+    "pictures": [
+      {
+        "url": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400",
+        "alt": "Vegetable garden"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1438109491414-7198515b166b?w=400",
+        "alt": "Flower garden"
+      }
+    ]
+  },
+  {
+    "name": "Cooking",
+    "description": "Explore flavors from around the world and create delicious meals. Master basic techniques and experiment with recipes from different cuisines.",
+    "links": [
+      {
+        "title": "Basic Cooking Skills",
+        "url": "https://www.bbcgoodfood.com/howto/guide/how-cook"
+      },
+      { "title": "Recipe Database", "url": "https://www.allrecipes.com/" },
+      {
+        "title": "Cooking Techniques",
+        "url": "https://www.seriouseats.com/techniques"
+      }
+    ],
+    "tags": [
+      { "name": "culinary" },
+      { "name": "creative" },
+      { "name": "social" },
+      { "name": "healthy" }
+    ],
+    "pictures": [
+      {
+        "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400",
+        "alt": "Cooking ingredients"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400",
+        "alt": "Finished dish"
+      }
+    ]
+  },
+  {
+    "name": "Rock Climbing",
+    "description": "Challenge yourself physically and mentally while conquering vertical surfaces. Start with indoor climbing and progress to outdoor adventures.",
+    "links": [
+      {
+        "title": "Climbing Basics",
+        "url": "https://www.rei.com/learn/expert-advice/climbing.html"
+      },
+      { "title": "Find Local Gyms", "url": "https://www.mountainproject.com/" },
+      {
+        "title": "Safety Guidelines",
+        "url": "https://www.climbing.com/skills/safety/"
+      }
+    ],
+    "tags": [
+      { "name": "outdoor" },
+      { "name": "physical" },
+      { "name": "challenging" },
+      { "name": "adventure" }
+    ],
+    "pictures": [
+      {
+        "url": "https://images.unsplash.com/photo-1522163182402-834f871fd851?w=400",
+        "alt": "Indoor climbing wall"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1551524164-687a55dd1126?w=400",
+        "alt": "Outdoor rock climbing"
+      }
+    ]
+  },
+  {
+    "name": "Piano",
+    "description": "Learn to play beautiful music and express emotions through melody. Start with basics and work towards playing your favorite songs.",
+    "links": [
+      {
+        "title": "Piano Lessons for Beginners",
+        "url": "https://www.pianolessons.com/"
+      },
+      { "title": "Free Sheet Music", "url": "https://www.musicnotes.com/" },
+      {
+        "title": "Online Piano Tutorials",
+        "url": "https://www.youtube.com/c/pianote/playlists"
+      }
+    ],
+    "tags": [
+      { "name": "musical" },
+      { "name": "creative" },
+      { "name": "indoor" },
+      { "name": "relaxing" }
+    ],
+    "pictures": [
+      {
+        "url": "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=400",
+        "alt": "Piano keyboard"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400",
+        "alt": "Person playing piano"
+      }
+    ]
+  },
+  {
+    "name": "Woodworking",
+    "description": "Create functional and beautiful objects from wood using hand and power tools. Build furniture, decorations, and useful items.",
+    "links": [
+      {
+        "title": "Woodworking Basics",
+        "url": "https://www.woodcraft.com/blog_entries/beginners-guide-to-woodworking"
+      },
+      {
+        "title": "Project Ideas",
+        "url": "https://www.ana-white.com/woodworking-projects"
+      },
+      {
+        "title": "Woodworking Community",
+        "url": "https://www.reddit.com/r/woodworking/"
+      }
+    ],
+    "tags": [
+      { "name": "crafts" },
+      { "name": "creative" },
+      { "name": "indoor" },
+      { "name": "tools" }
+    ],
+    "pictures": [
+      {
+        "url": "https://images.unsplash.com/photo-1503387837-b154d5074bd2?w=400",
+        "alt": "Woodworking tools"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=400",
+        "alt": "Woodworking project"
+      }
+    ]
+  },
+  {
+    "name": "Cycling",
+    "description": "Explore your surroundings on two wheels while getting exercise and fresh air. Choose from road biking, mountain biking, or casual cycling.",
+    "links": [
+      {
+        "title": "Bike Maintenance Guide",
+        "url": "https://www.rei.com/learn/expert-advice/bikes.html"
+      },
+      { "title": "Cycling Routes", "url": "https://www.strava.com/" },
+      {
+        "title": "Bike Safety Tips",
+        "url": "https://www.bicyclecoalition.org/"
+      }
+    ],
+    "tags": [
+      { "name": "outdoor" },
+      { "name": "physical" },
+      { "name": "transportation" },
+      { "name": "social" }
+    ],
+    "pictures": [
+      {
+        "url": "https://images.unsplash.com/photo-1544191694-54d5f11bd5d7?w=400",
+        "alt": "Mountain biking"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1471506480216-9c3b3d9b1c5b?w=400",
+        "alt": "Road cycling"
+      }
+    ]
+  },
+  {
+    "name": "Drawing",
+    "description": "Develop your artistic skills and visual creativity through various drawing techniques. Start with pencils and progress to other mediums.",
+    "links": [
+      { "title": "Drawing Tutorials", "url": "https://www.drawabox.com/" },
+      {
+        "title": "Art Supplies Guide",
+        "url": "https://www.dickblick.com/learn/"
+      },
+      {
+        "title": "Online Art Communities",
+        "url": "https://www.deviantart.com/"
+      }
+    ],
+    "tags": [
+      { "name": "art" },
+      { "name": "creative" },
+      { "name": "indoor" },
+      { "name": "therapeutic" }
+    ],
+    "pictures": [
+      {
+        "url": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400",
+        "alt": "Drawing supplies"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
+        "alt": "Sketchbook drawing"
+      }
+    ]
+  },
+  {
+    "name": "Meditation",
+    "description": "Cultivate mindfulness and reduce stress through regular meditation practice. Learn different techniques for focus and relaxation.",
+    "links": [
+      {
+        "title": "Meditation Guide",
+        "url": "https://www.headspace.com/meditation-101"
+      },
+      { "title": "Free Meditation Apps", "url": "https://www.calm.com/" },
+      { "title": "Mindfulness Resources", "url": "https://www.mindful.org/" }
+    ],
+    "tags": [
+      { "name": "mindfulness" },
+      { "name": "relaxing" },
+      { "name": "health" },
+      { "name": "indoor" }
+    ],
+    "pictures": [
+      {
+        "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400",
+        "alt": "Meditation space"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400",
+        "alt": "Person meditating"
+      }
+    ]
+  },
+  {
+    "name": "Programming",
+    "description": "Build software and solve problems through code. Learn programming languages, algorithms, and software development practices.",
+    "links": [
+      {
+        "title": "Free Programming Courses",
+        "url": "https://www.freecodecamp.org/"
+      },
+      { "title": "Learn JavaScript", "url": "https://javascript.info/" },
+      { "title": "Programming Community", "url": "https://stackoverflow.com/" }
+    ],
+    "tags": [
+      { "name": "technical" },
+      { "name": "creative" },
+      { "name": "indoor" },
+      { "name": "career" }
+    ],
+    "pictures": [
+      {
+        "url": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400",
+        "alt": "Code on screen"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400",
+        "alt": "Programming setup"
+      }
+    ]
+  }
+]

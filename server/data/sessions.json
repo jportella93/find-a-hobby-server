@@ -1,0 +1,52 @@
+[
+  {
+    "userId": "user_001",
+    "sessionId": "sess_abc123",
+    "preferences": {
+      "likedHobbies": ["Photography", "Drawing", "Piano"],
+      "dislikedHobbies": ["Rock Climbing"],
+      "categories": ["creative", "art", "musical"]
+    },
+    "lastActivity": "2024-12-08T10:30:00Z"
+  },
+  {
+    "userId": "user_002",
+    "sessionId": "sess_def456",
+    "preferences": {
+      "likedHobbies": ["Gardening", "Cooking", "Cycling"],
+      "dislikedHobbies": ["Programming"],
+      "categories": ["outdoor", "culinary", "physical"]
+    },
+    "lastActivity": "2024-12-08T09:15:00Z"
+  },
+  {
+    "userId": "user_003",
+    "sessionId": "sess_ghi789",
+    "preferences": {
+      "likedHobbies": ["Woodworking", "Programming"],
+      "dislikedHobbies": ["Meditation"],
+      "categories": ["technical", "crafts", "indoor"]
+    },
+    "lastActivity": "2024-12-08T11:45:00Z"
+  },
+  {
+    "userId": "user_004",
+    "sessionId": "sess_jkl012",
+    "preferences": {
+      "likedHobbies": ["Meditation", "Rock Climbing", "Cycling"],
+      "dislikedHobbies": ["Cooking"],
+      "categories": ["mindfulness", "adventure", "physical"]
+    },
+    "lastActivity": "2024-12-08T08:20:00Z"
+  },
+  {
+    "userId": "user_005",
+    "sessionId": "sess_mno345",
+    "preferences": {
+      "likedHobbies": ["Cooking", "Photography", "Drawing"],
+      "dislikedHobbies": ["Woodworking"],
+      "categories": ["creative", "culinary", "art"]
+    },
+    "lastActivity": "2024-12-08T12:00:00Z"
+  }
+]

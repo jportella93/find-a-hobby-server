@@ -13,7 +13,12 @@
     "start": "node server/index.js",
     "dev": "nodemon server/index.js",
     "test": "jest",
-    "lint": "eslint server test"
+    "lint": "eslint server test",
+    "seed": "node server/scripts/seed.js",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:clean": "docker-compose down -v"
   },
   "engines": {
     "node": ">=18.0.0"
