@@ -17,10 +17,21 @@
       }
     ],
     "tags": [
-      { "name": "creative" },
-      { "name": "outdoor" },
-      { "name": "technical" },
-      { "name": "equipment" }
+      {
+        "name": "creative",
+        "votes": 25,
+        "average": 75
+      },
+      {
+        "name": "fit",
+        "votes": 49,
+        "average": 15
+      },
+      {
+        "name": "money",
+        "votes": 34,
+        "average": 10
+      }
     ],
     "pictures": [
       {
@@ -45,13 +56,27 @@
         "title": "Organic Gardening Tips",
         "url": "https://www.organicgardening.com/"
       },
-      { "title": "Gardening Forum", "url": "https://forum.gardeners.com/" }
+      {
+        "title": "Gardening Forum",
+        "url": "https://forum.gardeners.com/"
+      }
     ],
     "tags": [
-      { "name": "outdoor" },
-      { "name": "relaxing" },
-      { "name": "sustainable" },
-      { "name": "seasonal" }
+      {
+        "name": "creative",
+        "votes": 45,
+        "average": 40
+      },
+      {
+        "name": "fit",
+        "votes": 32,
+        "average": 45
+      },
+      {
+        "name": "money",
+        "votes": 59,
+        "average": 15
+      }
     ],
     "pictures": [
       {
@@ -72,17 +97,31 @@
         "title": "Basic Cooking Skills",
         "url": "https://www.bbcgoodfood.com/howto/guide/how-cook"
       },
-      { "title": "Recipe Database", "url": "https://www.allrecipes.com/" },
+      {
+        "title": "Recipe Database",
+        "url": "https://www.allrecipes.com/"
+      },
       {
         "title": "Cooking Techniques",
         "url": "https://www.seriouseats.com/techniques"
       }
     ],
     "tags": [
-      { "name": "culinary" },
-      { "name": "creative" },
-      { "name": "social" },
-      { "name": "healthy" }
+      {
+        "name": "creative",
+        "votes": 64,
+        "average": 70
+      },
+      {
+        "name": "fit",
+        "votes": 47,
+        "average": 20
+      },
+      {
+        "name": "money",
+        "votes": 55,
+        "average": 10
+      }
     ],
     "pictures": [
       {
@@ -103,17 +142,31 @@
         "title": "Climbing Basics",
         "url": "https://www.rei.com/learn/expert-advice/climbing.html"
       },
-      { "title": "Find Local Gyms", "url": "https://www.mountainproject.com/" },
+      {
+        "title": "Find Local Gyms",
+        "url": "https://www.mountainproject.com/"
+      },
       {
         "title": "Safety Guidelines",
         "url": "https://www.climbing.com/skills/safety/"
       }
     ],
     "tags": [
-      { "name": "outdoor" },
-      { "name": "physical" },
-      { "name": "challenging" },
-      { "name": "adventure" }
+      {
+        "name": "creative",
+        "votes": 46,
+        "average": 30
+      },
+      {
+        "name": "fit",
+        "votes": 58,
+        "average": 60
+      },
+      {
+        "name": "money",
+        "votes": 53,
+        "average": 10
+      }
     ],
     "pictures": [
       {
@@ -134,17 +187,31 @@
         "title": "Piano Lessons for Beginners",
         "url": "https://www.pianolessons.com/"
       },
-      { "title": "Free Sheet Music", "url": "https://www.musicnotes.com/" },
+      {
+        "title": "Free Sheet Music",
+        "url": "https://www.musicnotes.com/"
+      },
       {
         "title": "Online Piano Tutorials",
         "url": "https://www.youtube.com/c/pianote/playlists"
       }
     ],
     "tags": [
-      { "name": "musical" },
-      { "name": "creative" },
-      { "name": "indoor" },
-      { "name": "relaxing" }
+      {
+        "name": "creative",
+        "votes": 46,
+        "average": 80
+      },
+      {
+        "name": "fit",
+        "votes": 66,
+        "average": 10
+      },
+      {
+        "name": "money",
+        "votes": 62,
+        "average": 10
+      }
     ],
     "pictures": [
       {
@@ -175,10 +242,21 @@
       }
     ],
     "tags": [
-      { "name": "crafts" },
-      { "name": "creative" },
-      { "name": "indoor" },
-      { "name": "tools" }
+      {
+        "name": "creative",
+        "votes": 53,
+        "average": 70
+      },
+      {
+        "name": "fit",
+        "votes": 33,
+        "average": 20
+      },
+      {
+        "name": "money",
+        "votes": 28,
+        "average": 10
+      }
     ],
     "pictures": [
       {
@@ -199,17 +277,31 @@
         "title": "Bike Maintenance Guide",
         "url": "https://www.rei.com/learn/expert-advice/bikes.html"
       },
-      { "title": "Cycling Routes", "url": "https://www.strava.com/" },
+      {
+        "title": "Cycling Routes",
+        "url": "https://www.strava.com/"
+      },
       {
         "title": "Bike Safety Tips",
         "url": "https://www.bicyclecoalition.org/"
       }
     ],
     "tags": [
-      { "name": "outdoor" },
-      { "name": "physical" },
-      { "name": "transportation" },
-      { "name": "social" }
+      {
+        "name": "creative",
+        "votes": 21,
+        "average": 20
+      },
+      {
+        "name": "fit",
+        "votes": 34,
+        "average": 70
+      },
+      {
+        "name": "money",
+        "votes": 67,
+        "average": 10
+      }
     ],
     "pictures": [
       {
@@ -226,7 +318,10 @@
     "name": "Drawing",
     "description": "Develop your artistic skills and visual creativity through various drawing techniques. Start with pencils and progress to other mediums.",
     "links": [
-      { "title": "Drawing Tutorials", "url": "https://www.drawabox.com/" },
+      {
+        "title": "Drawing Tutorials",
+        "url": "https://www.drawabox.com/"
+      },
       {
         "title": "Art Supplies Guide",
         "url": "https://www.dickblick.com/learn/"
@@ -237,10 +332,21 @@
       }
     ],
     "tags": [
-      { "name": "art" },
-      { "name": "creative" },
-      { "name": "indoor" },
-      { "name": "therapeutic" }
+      {
+        "name": "creative",
+        "votes": 36,
+        "average": 85
+      },
+      {
+        "name": "fit",
+        "votes": 55,
+        "average": 5
+      },
+      {
+        "name": "money",
+        "votes": 45,
+        "average": 10
+      }
     ],
     "pictures": [
       {
@@ -261,14 +367,31 @@
         "title": "Meditation Guide",
         "url": "https://www.headspace.com/meditation-101"
       },
-      { "title": "Free Meditation Apps", "url": "https://www.calm.com/" },
-      { "title": "Mindfulness Resources", "url": "https://www.mindful.org/" }
+      {
+        "title": "Free Meditation Apps",
+        "url": "https://www.calm.com/"
+      },
+      {
+        "title": "Mindfulness Resources",
+        "url": "https://www.mindful.org/"
+      }
     ],
     "tags": [
-      { "name": "mindfulness" },
-      { "name": "relaxing" },
-      { "name": "health" },
-      { "name": "indoor" }
+      {
+        "name": "creative",
+        "votes": 29,
+        "average": 15
+      },
+      {
+        "name": "fit",
+        "votes": 58,
+        "average": 5
+      },
+      {
+        "name": "money",
+        "votes": 51,
+        "average": 80
+      }
     ],
     "pictures": [
       {
@@ -289,14 +412,31 @@
         "title": "Free Programming Courses",
         "url": "https://www.freecodecamp.org/"
       },
-      { "title": "Learn JavaScript", "url": "https://javascript.info/" },
-      { "title": "Programming Community", "url": "https://stackoverflow.com/" }
+      {
+        "title": "Learn JavaScript",
+        "url": "https://javascript.info/"
+      },
+      {
+        "title": "Programming Community",
+        "url": "https://stackoverflow.com/"
+      }
     ],
     "tags": [
-      { "name": "technical" },
-      { "name": "creative" },
-      { "name": "indoor" },
-      { "name": "career" }
+      {
+        "name": "creative",
+        "votes": 52,
+        "average": 60
+      },
+      {
+        "name": "fit",
+        "votes": 47,
+        "average": 5
+      },
+      {
+        "name": "money",
+        "votes": 65,
+        "average": 35
+      }
     ],
     "pictures": [
       {
