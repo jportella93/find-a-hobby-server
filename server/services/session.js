@@ -1,4 +1,4 @@
-const generateUUID = require('uuid/v4');
+const { v4: generateUUID } = require('uuid');
 const sessions = require('../models/sessions');
 
 const session = async (ctx, next) => {

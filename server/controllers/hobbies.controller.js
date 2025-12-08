@@ -1,4 +1,4 @@
-const raccoon = require('../services/raccoon');
+const raccoonService = require('../services/raccoon');
 
 const Hobby = require('../models/hobby');
 
@@ -22,15 +22,31 @@ const getRecHobbies = async (ctx, next) => {
   const user = ctx.params.user.slice(1);
   // console.log('----user of the recom:',user);
 
-  const recs = await raccoon.recommendFor(user, 10);
-  const recsMap = await Hobby.find({
-    _id: {
-      $in: recs,
-    },
-  });
+  if (!raccoonService.raccoonAvailable) {
+    // Return random hobbies if recommendations are not available
+    const hobbies = await Hobby.find().limit(10);
+    ctx.body = hobbies;
+    ctx.status = 200;
+    return;
+  }
 
-  ctx.body = recsMap;
-  ctx.status = 200;
+  try {
+    const recs = await raccoonService.raccoon.recommendFor(user, 10);
+    const recsMap = await Hobby.find({
+      _id: {
+        $in: recs,
+      },
+    });
+
+    ctx.body = recsMap;
+    ctx.status = 200;
+  } catch (err) {
+    console.warn('Recommendation error, returning random hobbies:', err.message);
+    // Fallback to random hobbies
+    const hobbies = await Hobby.find().limit(10);
+    ctx.body = hobbies;
+    ctx.status = 200;
+  }
 };
 
 const getSeenHobbies = async (ctx,next) => {
@@ -62,7 +78,7 @@ const postHobby = async (ctx, next) => {
         pictures: hobbyData.pictures,
       });
       const savedHobby = await hobby.save()
-      if (savedHobby.length) {
+      if (savedHobby) {
         ctx.status = 201;
         ctx.body = JSON.stringify({
           status: 'success',
@@ -75,24 +91,36 @@ const postHobby = async (ctx, next) => {
   }
 };
 
-const likeHobby = (ctx, next) => {
+const likeHobby = async (ctx, next) => {
   const userId = ctx.token;
   const hobbyId = ctx.request.body.hobbyId;
   // console.log('--userId:', userId);
   // console.log('--hobbyId:', hobbyId);
 
-  raccoon.liked(userId, hobbyId);
+  if (raccoonService.raccoonAvailable) {
+    try {
+      await raccoonService.raccoon.liked(userId, hobbyId);
+    } catch (err) {
+      console.warn('Raccoon like error:', err.message);
+    }
+  }
 
   ctx.body = { userId, hobbyId };
 };
 
-const dislikeHobby = (ctx, next) => {
+const dislikeHobby = async (ctx, next) => {
   const userId = ctx.token;
   const hobbyId = ctx.request.body.hobbyId;
   // console.log('--userId:', userId);
   // console.log('--hobbyId:', hobbyId);
 
-  raccoon.disliked(userId, hobbyId);
+  if (raccoonService.raccoonAvailable) {
+    try {
+      await raccoonService.raccoon.disliked(userId, hobbyId);
+    } catch (err) {
+      console.warn('Raccoon dislike error:', err.message);
+    }
+  }
 
   ctx.body = { userId, hobbyId };
 };

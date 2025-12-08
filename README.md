@@ -10,12 +10,18 @@ https://github.com/jportella93/find-a-hobby-client</h3>
 
 
 ## Getting started
-Install mongodb and redis in your computer if you don't have done it already. <br>
-https://www.mongodb.com/ <br>
-https://redis.io/
+
+This project requires Node.js 18+, MongoDB, and Redis to run locally.
+
+### Prerequisites
+
+1. **Install Node.js 18+**: Download from https://nodejs.org/
+2. **Install MongoDB**: https://www.mongodb.com/docs/manual/installation/
+3. **Install Redis**: https://redis.io/docs/install/install-redis/
+
+### Setup
 
 1. Clone the repo
-
 ```
 $ git clone https://github.com/jportella93/find-a-hobby-server.git
 $ cd find-a-hobby-server
@@ -26,29 +32,35 @@ $ cd find-a-hobby-server
 $ npm install
 ```
 
-3. Start redis database
+3. Set up environment variables
 ```
-$ redis-server
+$ cp .env.example .env
+# Edit .env with your configuration if needed
 ```
 
-4. In a new terminal window (keep the other one also open): Start mongodb database
+4. Start MongoDB (in one terminal)
 ```
 $ mongod
+# Or if using MongoDB with brew on macOS: brew services start mongodb-community
 ```
 
-5. In a new terminal window (keep the other two also open): Start development server
+5. Start Redis (in another terminal)
 ```
-$ npm run start
+$ redis-server
+# Or if using Redis with brew on macOS: brew services start redis
 ```
-If everything went good you will see a message like:
 
-  <p align="center"><em>Mongoose connected to mongodb://localhost/find-a-hobby <br>
-  find a Hobby! Server connected on port 3000</em></p>
+6. Start the development server (in another terminal)
+```
+$ npm run dev
+```
 
-The number of the port that logs in (3000 in this case) is what you have to write in the client in the file /src/lib/apiClient.js
+If everything starts successfully, you should see:
+- "Mongoose connected to mongodb://localhost:27017/find-a-hobby"
+- "find a Hobby! Server connected on port 3000"
 
-6. Connect with client.
-Go to https://github.com/jportella93/find-a-hobby-client and follow the getting started instructions.
+7. Connect with client
+Go to https://github.com/jportella93/find-a-hobby-client and follow the getting started instructions. Use port 3000 in the client configuration.
 
 
 ## Built with

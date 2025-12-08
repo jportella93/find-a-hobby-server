@@ -26,11 +26,9 @@ app
   .use(bodyParser())
   .use(router.routes());
 
-const server = app.listen(
-  PORT,
-  console.log(`find a Hobby! Server connected on port ${PORT}`),
-)
-  .on('error', err => console.log(err));
+const server = app.listen(PORT, () => {
+  console.log(`find a Hobby! Server connected on port ${PORT}`);
+}).on('error', err => console.log(err));
 
 
 // TODO: store images somewhere, right now is working with image links

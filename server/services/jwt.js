@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken');
-const uuid = require('uuid/v4');
+const { v4: uuidv4 } = require('uuid');
 
 const secret = process.env.JWT_SECRET;
 
 const createToken = () => jwt.sign({
-  uuid: uuid()
+  uuid: uuidv4()
 }, secret);
 
 module.exports = async (ctx, next) => {

@@ -1,21 +1,53 @@
-const raccoon = require('raccoon');
+// Lazy initialization of raccoon to avoid startup crashes
+let raccoonInstance = null;
+let raccoonAvailable = false;
 
-// / these are the default values but you can change them
-raccoon.config.nearestNeighbors = 5; // number of neighbors you want to compare a user against
-raccoon.config.className = 'hobby'; // prefix for your items (used for redis)
-raccoon.config.numOfRecsStore = 30; // number of recommendations to store per user
+function getRaccoon() {
+  if (raccoonInstance) {
+    return raccoonInstance;
+  }
 
-raccoon.config.localMongoDbURL = 'mongodb://localhost/find-a-hobby'; // local mongo DB url
-raccoon.config.remoteMongoDbURL = process.env.MONGO_HOSTAUTH; // remote mongo DB url
-  // this should include all auth info
-raccoon.config.localRedisPort = 6379; // local redis port
-raccoon.config.localRedisURL = '127.0.0.1'; // local redis url
-raccoon.config.remoteRedisPort = process.env.REDIS_PORT || 12000; // remote redis port
-raccoon.config.remoteRedisURL = process.env.REDIS_URL; // remote redis url
-raccoon.config.remoteRedisAuth = process.env.REDIS_AUTH; // remote redis auth
-raccoon.config.localSetup = false; // IMPORTANT. whether you want to use local or remote databases
+  try {
+    const raccoon = require('raccoon');
 
-module.exports = raccoon;
+    // Configure raccoon
+    raccoon.config.nearestNeighbors = 5;
+    raccoon.config.className = 'hobby';
+    raccoon.config.numOfRecsStore = 30;
+
+    raccoon.config.localMongoDbURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/find-a-hobby';
+    raccoon.config.remoteMongoDbURL = process.env.MONGO_HOSTAUTH;
+    raccoon.config.localRedisPort = 6379;
+    raccoon.config.localRedisURL = '127.0.0.1';
+    raccoon.config.remoteRedisPort = process.env.REDIS_PORT || 12000;
+    raccoon.config.remoteRedisURL = process.env.REDIS_URL;
+    raccoon.config.remoteRedisAuth = process.env.REDIS_AUTH;
+    raccoon.config.localSetup = true;
+
+    raccoonInstance = raccoon;
+    raccoonAvailable = true;
+
+    console.log('Raccoon initialized successfully');
+    return raccoon;
+  } catch (err) {
+    console.warn('Raccoon initialization failed, recommendations disabled:', err.message);
+    raccoonAvailable = false;
+    return null;
+  }
+}
+
+module.exports = {
+  get raccoon() {
+    return getRaccoon();
+  },
+  get raccoonAvailable() {
+    // Try to initialize if not already done
+    if (!raccoonInstance && !raccoonAvailable) {
+      getRaccoon();
+    }
+    return raccoonAvailable;
+  }
+};
 
 //
 // redis://
