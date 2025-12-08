@@ -5,15 +5,15 @@
     "links": [
       {
         "title": "Photography Basics Guide",
-        "url": "https://www.photographylife.com/photography-basics"
+        "getStarted": "https://www.photographylife.com/photography-basics"
       },
       {
         "title": "Free Online Photography Course",
-        "url": "https://www.coursera.org/learn/photography-basics"
+        "getStarted": "https://www.coursera.org/learn/photography-basics"
       },
       {
         "title": "Photography Community",
-        "url": "https://www.reddit.com/r/photography/"
+        "getStarted": "https://www.reddit.com/r/photography/"
       }
     ],
     "tags": [
@@ -50,15 +50,15 @@
     "links": [
       {
         "title": "Beginner's Gardening Guide",
-        "url": "https://www.almanac.com/gardening"
+        "getStarted": "https://www.almanac.com/gardening"
       },
       {
         "title": "Organic Gardening Tips",
-        "url": "https://www.organicgardening.com/"
+        "getStarted": "https://www.organicgardening.com/"
       },
       {
         "title": "Gardening Forum",
-        "url": "https://forum.gardeners.com/"
+        "getStarted": "https://forum.gardeners.com/"
       }
     ],
     "tags": [
@@ -95,15 +95,15 @@
     "links": [
       {
         "title": "Basic Cooking Skills",
-        "url": "https://www.bbcgoodfood.com/howto/guide/how-cook"
+        "getStarted": "https://www.bbcgoodfood.com/howto/guide/how-cook"
       },
       {
         "title": "Recipe Database",
-        "url": "https://www.allrecipes.com/"
+        "getStarted": "https://www.allrecipes.com/"
       },
       {
         "title": "Cooking Techniques",
-        "url": "https://www.seriouseats.com/techniques"
+        "getStarted": "https://www.seriouseats.com/techniques"
       }
     ],
     "tags": [
@@ -140,15 +140,15 @@
     "links": [
       {
         "title": "Climbing Basics",
-        "url": "https://www.rei.com/learn/expert-advice/climbing.html"
+        "getStarted": "https://www.rei.com/learn/expert-advice/climbing.html"
       },
       {
         "title": "Find Local Gyms",
-        "url": "https://www.mountainproject.com/"
+        "getStarted": "https://www.mountainproject.com/"
       },
       {
         "title": "Safety Guidelines",
-        "url": "https://www.climbing.com/skills/safety/"
+        "getStarted": "https://www.climbing.com/skills/safety/"
       }
     ],
     "tags": [
@@ -185,15 +185,15 @@
     "links": [
       {
         "title": "Piano Lessons for Beginners",
-        "url": "https://www.pianolessons.com/"
+        "getStarted": "https://www.pianolessons.com/"
       },
       {
         "title": "Free Sheet Music",
-        "url": "https://www.musicnotes.com/"
+        "getStarted": "https://www.musicnotes.com/"
       },
       {
         "title": "Online Piano Tutorials",
-        "url": "https://www.youtube.com/c/pianote/playlists"
+        "getStarted": "https://www.youtube.com/c/pianote/playlists"
       }
     ],
     "tags": [
@@ -230,15 +230,15 @@
     "links": [
       {
         "title": "Woodworking Basics",
-        "url": "https://www.woodcraft.com/blog_entries/beginners-guide-to-woodworking"
+        "getStarted": "https://www.woodcraft.com/blog_entries/beginners-guide-to-woodworking"
       },
       {
         "title": "Project Ideas",
-        "url": "https://www.ana-white.com/woodworking-projects"
+        "getStarted": "https://www.ana-white.com/woodworking-projects"
       },
       {
         "title": "Woodworking Community",
-        "url": "https://www.reddit.com/r/woodworking/"
+        "getStarted": "https://www.reddit.com/r/woodworking/"
       }
     ],
     "tags": [
@@ -275,15 +275,15 @@
     "links": [
       {
         "title": "Bike Maintenance Guide",
-        "url": "https://www.rei.com/learn/expert-advice/bikes.html"
+        "getStarted": "https://www.rei.com/learn/expert-advice/bikes.html"
       },
       {
         "title": "Cycling Routes",
-        "url": "https://www.strava.com/"
+        "getStarted": "https://www.strava.com/"
       },
       {
         "title": "Bike Safety Tips",
-        "url": "https://www.bicyclecoalition.org/"
+        "getStarted": "https://www.bicyclecoalition.org/"
       }
     ],
     "tags": [
@@ -320,15 +320,15 @@
     "links": [
       {
         "title": "Drawing Tutorials",
-        "url": "https://www.drawabox.com/"
+        "getStarted": "https://www.drawabox.com/"
       },
       {
         "title": "Art Supplies Guide",
-        "url": "https://www.dickblick.com/learn/"
+        "getStarted": "https://www.dickblick.com/learn/"
       },
       {
         "title": "Online Art Communities",
-        "url": "https://www.deviantart.com/"
+        "getStarted": "https://www.deviantart.com/"
       }
     ],
     "tags": [
@@ -365,15 +365,15 @@
     "links": [
       {
         "title": "Meditation Guide",
-        "url": "https://www.headspace.com/meditation-101"
+        "getStarted": "https://www.headspace.com/meditation-101"
       },
       {
         "title": "Free Meditation Apps",
-        "url": "https://www.calm.com/"
+        "getStarted": "https://www.calm.com/"
       },
       {
         "title": "Mindfulness Resources",
-        "url": "https://www.mindful.org/"
+        "getStarted": "https://www.mindful.org/"
       }
     ],
     "tags": [
@@ -410,15 +410,15 @@
     "links": [
       {
         "title": "Free Programming Courses",
-        "url": "https://www.freecodecamp.org/"
+        "getStarted": "https://www.freecodecamp.org/"
       },
       {
         "title": "Learn JavaScript",
-        "url": "https://javascript.info/"
+        "getStarted": "https://javascript.info/"
       },
       {
         "title": "Programming Community",
-        "url": "https://stackoverflow.com/"
+        "getStarted": "https://stackoverflow.com/"
       }
     ],
     "tags": [
