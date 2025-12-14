@@ -2,6 +2,8 @@
 
 'use strict';
 
+const dotenv = require('dotenv');
+dotenv.config();
 const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs').promises;
@@ -9,7 +11,7 @@ const fs = require('fs').promises;
 const Hobby = require('../models/hobby');
 
 // Database connection setup (reuse existing db.js logic)
-const dbURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/find-a-hobby';
+const dbURL = process.env.MONGODB_URI
 
 async function connectToDatabase() {
   try {

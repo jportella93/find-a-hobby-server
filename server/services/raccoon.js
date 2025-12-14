@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 // Lazy initialization of raccoon to avoid startup crashes
 let raccoonInstance = null;
 let raccoonAvailable = false;
@@ -8,6 +11,29 @@ function getRaccoon() {
   }
 
   try {
+    // Parse Redis URL to extract components for raccoon's old Redis client
+    const redisUrl = process.env.REDIS_URL;
+    let redisHost, redisPort, redisAuth;
+
+    if (redisUrl && redisUrl.startsWith('redis://')) {
+      // Parse URL like: redis://user:pass@host:port
+      const url = new URL(redisUrl);
+      redisHost = url.hostname;
+      redisPort = url.port || '6379';
+      // For Redis Cloud, use just the password part (not username:password)
+      redisAuth = url.password || '';
+    } else {
+      // Fallback to separate env vars
+      redisHost = process.env.REDIS_URL;
+      redisPort = process.env.REDIS_PORT;
+      redisAuth = process.env.REDIS_AUTH;
+    }
+
+    // Set raccoon-specific environment variables before requiring raccoon
+    process.env.RACCOON_REDIS_URL = redisHost;
+    process.env.RACCOON_REDIS_PORT = redisPort;
+    process.env.RACCOON_REDIS_AUTH = redisAuth;
+
     const raccoon = require('raccoon');
 
     // Configure raccoon
@@ -15,14 +41,10 @@ function getRaccoon() {
     raccoon.config.className = 'hobby';
     raccoon.config.numOfRecsStore = 30;
 
-    raccoon.config.localMongoDbURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/find-a-hobby';
-    raccoon.config.remoteMongoDbURL = process.env.MONGO_HOSTAUTH;
-    raccoon.config.localRedisPort = 6379;
-    raccoon.config.localRedisURL = '127.0.0.1';
-    raccoon.config.remoteRedisPort = process.env.REDIS_PORT || 12000;
-    raccoon.config.remoteRedisURL = process.env.REDIS_URL;
-    raccoon.config.remoteRedisAuth = process.env.REDIS_AUTH;
-    raccoon.config.localSetup = true;
+    // Set Redis config directly (as fallback, though environment variables should work)
+    raccoon.config.redisUrl = redisHost;
+    raccoon.config.redisPort = redisPort;
+    raccoon.config.redisAuth = redisAuth;
 
     raccoonInstance = raccoon;
     raccoonAvailable = true;
@@ -48,11 +70,3 @@ module.exports = {
     return raccoonAvailable;
   }
 };
-
-//
-// redis://
-// h:p2a29af429f190dc2f803ff41b43ab0767adc74be1fd23222431ff9d7e396d071
-// @
-// ec2-18-208-87-147.compute-1.amazonaws.com
-// :
-// 15529

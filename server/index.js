@@ -17,6 +17,10 @@ const jwt = require('./services/jwt');
 // Connect to mongodb
 require('./models/db');
 
+// Initialize raccoon (Redis connection) on startup
+const raccoonService = require('./services/raccoon');
+raccoonService.raccoon; // Trigger initialization
+
 const PORT = process.env.PORT || 3000;
 
 app
