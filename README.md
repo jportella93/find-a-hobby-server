@@ -11,6 +11,25 @@ https://github.com/jportella93/find-a-hobby-client</h3>
 
 This project requires Node.js 18+, MongoDB, and Redis to run locally.
 
+## Deploying to Render (demo/portfolio)
+
+This API can be deployed as a **Render Web Service**. In production you should use **MongoDB Atlas** for MongoDB and a hosted Redis (Render Redis / Upstash / Redis Cloud) for recommendations.
+
+### Required environment variables (Render)
+
+- **`MONGODB_URI`**: MongoDB Atlas connection string.
+- **`JWT_SECRET`**: Any long random string (used to sign the `X-Token` client identifier).
+
+### Optional environment variables (Render)
+
+- **`REDIS_URL`**: `redis://...` URL. If unset, recommendations will gracefully fall back to random hobbies.
+- **`PORT`**: Render sets this automatically; the app respects it.
+
+### Render settings
+
+- **Build command**: `npm ci`
+- **Start command**: `npm start`
+
 ### Prerequisites
 
 1. **Install Node.js 18+**: Download from https://nodejs.org/
@@ -135,6 +154,10 @@ $ npm run dev
 ### Connect with client
 
 Go to https://github.com/jportella93/find-a-hobby-client and follow the getting started instructions. Use port 3000 in the client configuration.
+
+### Health check
+
+- `GET /healthz` returns a small JSON payload including Mongo connection state and whether Redis-backed recommendations are available.
 
 ## Built with
 

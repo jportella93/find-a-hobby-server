@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+
 dotenv.config();
 
 // Lazy initialization of raccoon to avoid startup crashes
@@ -13,7 +14,9 @@ function getRaccoon() {
   try {
     // Parse Redis URL to extract components for raccoon's old Redis client
     const redisUrl = process.env.REDIS_URL;
-    let redisHost, redisPort, redisAuth;
+    let redisHost;
+    let redisPort;
+    let redisAuth;
 
     if (redisUrl && redisUrl.startsWith('redis://')) {
       // Parse URL like: redis://user:pass@host:port
@@ -29,12 +32,19 @@ function getRaccoon() {
       redisAuth = process.env.REDIS_AUTH;
     }
 
+    if (!redisHost) {
+      // No Redis configured: keep recommendations disabled.
+      raccoonAvailable = false;
+      return null;
+    }
+
+    // eslint-disable-next-line global-require
+    const raccoon = require('raccoon');
+
     // Set raccoon-specific environment variables before requiring raccoon
     process.env.RACCOON_REDIS_URL = redisHost;
     process.env.RACCOON_REDIS_PORT = redisPort;
     process.env.RACCOON_REDIS_AUTH = redisAuth;
-
-    const raccoon = require('raccoon');
 
     // Configure raccoon
     raccoon.config.nearestNeighbors = 5;
@@ -59,6 +69,9 @@ function getRaccoon() {
 }
 
 module.exports = {
+  init() {
+    getRaccoon();
+  },
   get raccoon() {
     return getRaccoon();
   },
@@ -68,5 +81,5 @@ module.exports = {
       getRaccoon();
     }
     return raccoonAvailable;
-  }
+  },
 };

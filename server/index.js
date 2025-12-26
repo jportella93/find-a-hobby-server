@@ -1,4 +1,3 @@
-
 require('dotenv').config();
 
 const Koa = require('koa');
@@ -14,12 +13,14 @@ const router = require('./router');
 // const session = require('./services/session')
 const jwt = require('./services/jwt');
 
-// Connect to mongodb
-require('./models/db');
+if (process.env.NODE_ENV !== 'test') {
+  // Connect to MongoDB
+  require('./models/db');
 
-// Initialize raccoon (Redis connection) on startup
-const raccoonService = require('./services/raccoon');
-raccoonService.raccoon; // Trigger initialization
+  // Initialize raccoon (Redis connection) on startup (optional)
+  const raccoonService = require('./services/raccoon');
+  raccoonService.init();
+}
 
 const PORT = process.env.PORT || 3000;
 
@@ -32,8 +33,7 @@ app
 
 const server = app.listen(PORT, () => {
   console.log(`find a Hobby! Server connected on port ${PORT}`);
-}).on('error', err => console.log(err));
-
+}).on('error', (err) => console.log(err));
 
 // TODO: store images somewhere, right now is working with image links
 module.exports = server;

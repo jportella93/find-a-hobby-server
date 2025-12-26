@@ -1,12 +1,11 @@
-'use strict';
 const mongoose = require('mongoose');
 
 const hobbySchema = new mongoose.Schema({
-	name:	String,
-	description: String,
-	"links": [{}],
-	"tags": [{}],
-	"pictures": [{}]
+  name: String,
+  description: String,
+  links: [{}],
+  tags: [{}],
+  pictures: [{}],
 });
 
 const Hobby = mongoose.model('Hobby', hobbySchema);
