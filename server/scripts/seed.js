@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
-'use strict';
-
 const dotenv = require('dotenv');
+
 dotenv.config();
 const mongoose = require('mongoose');
 const path = require('path');
@@ -11,7 +10,7 @@ const fs = require('fs').promises;
 const Hobby = require('../models/hobby');
 
 // Database connection setup (reuse existing db.js logic)
-const dbURL = process.env.MONGODB_URI
+const dbURL = process.env.MONGODB_URI;
 
 async function connectToDatabase() {
   try {
@@ -52,8 +51,8 @@ async function seedHobbies() {
           {
             upsert: true, // create if doesn't exist
             new: true, // return the updated document
-            setDefaultsOnInsert: true // apply defaults on insert
-          }
+            setDefaultsOnInsert: true, // apply defaults on insert
+          },
         );
 
         if (result.upserted) {
@@ -68,10 +67,9 @@ async function seedHobbies() {
       }
     }
 
-    console.log(`\n📊 Seeding Summary:`);
+    console.log('\n📊 Seeding Summary:');
     console.log(`   • ${inserted} hobbies inserted`);
     console.log(`   • ${skipped} hobbies skipped (already existed)`);
-
   } catch (error) {
     console.error('❌ Error seeding hobbies:', error);
     throw error;

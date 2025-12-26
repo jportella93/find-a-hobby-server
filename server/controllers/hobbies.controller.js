@@ -2,7 +2,7 @@ const raccoonService = require('../services/raccoon');
 
 const Hobby = require('../models/hobby');
 
-const getAllHobbies = async (ctx, next) => {
+const getAllHobbies = async (ctx) => {
   const hobbies = await Hobby.find();
   if (!hobbies) {
     console.log('no hobbies found');
@@ -13,13 +13,22 @@ const getAllHobbies = async (ctx, next) => {
   ctx.body = hobbies;
 };
 
-const getRandomHobbie = async (ctx, next) => {
+const getRandomHobbie = async (ctx) => {
   const hobbies = await Hobby.find();
-  ctx.body = hobbies[Math.floor(Math.random()*hobbies.length)];
-}
+  if (!hobbies || hobbies.length === 0) {
+    ctx.status = 404;
+    ctx.body = { error: 'no hobbies found' };
+    return;
+  }
+  ctx.body = hobbies[Math.floor(Math.random() * hobbies.length)];
+};
 
-const getRecHobbies = async (ctx, next) => {
-  const user = ctx.params.user.slice(1);
+const getRecHobbies = async (ctx) => {
+  let { user } = ctx.params;
+  // Support legacy route shape where user param may include a leading ':'
+  if (typeof user === 'string' && user.startsWith(':')) {
+    user = user.slice(1);
+  }
   // console.log('----user of the recom:',user);
 
   if (!raccoonService.raccoonAvailable) {
@@ -49,12 +58,14 @@ const getRecHobbies = async (ctx, next) => {
   }
 };
 
-const getSeenHobbies = async (ctx,next) => {
+const getSeenHobbies = async (ctx) => {
   // const userId = ctx.request.body;
   // // TODO: this
-}
+  ctx.status = 501;
+  ctx.body = { error: 'not implemented' };
+};
 
-const postHobby = async (ctx, next) => {
+const postHobby = async (ctx) => {
   const hobbyData = ctx.request.body;
   // console.log(hobbyData);
   // TODO: Response is not arriving to client properly.
@@ -64,36 +75,38 @@ const postHobby = async (ctx, next) => {
     console.log('===', hobby);
     if (hobby) {
       ctx.status = 400;
-      ctx.body = JSON.stringify({
+      ctx.body = {
         status: 'error',
-        message: 'There is already a hobby with that name'
-      });
+        message: 'There is already a hobby with that name',
+      };
     } else {
       console.log('===new hobby');
       hobby = new Hobby({
-        name:	hobbyData.name,
+        name: hobbyData.name,
         description: hobbyData.description,
         links: hobbyData.links,
         tags: hobbyData.tags,
         pictures: hobbyData.pictures,
       });
-      const savedHobby = await hobby.save()
+      const savedHobby = await hobby.save();
       if (savedHobby) {
         ctx.status = 201;
-        ctx.body = JSON.stringify({
+        ctx.body = {
           status: 'success',
-          data: savedHobby
-        });
+          data: savedHobby,
+        };
       }
     }
   } catch (err) {
     console.log(err);
+    ctx.status = 500;
+    ctx.body = { status: 'error', message: 'Failed to create hobby' };
   }
 };
 
-const likeHobby = async (ctx, next) => {
+const likeHobby = async (ctx) => {
   const userId = ctx.token;
-  const hobbyId = ctx.request.body.hobbyId;
+  const { hobbyId } = ctx.request.body;
   // console.log('--userId:', userId);
   // console.log('--hobbyId:', hobbyId);
 
@@ -108,9 +121,9 @@ const likeHobby = async (ctx, next) => {
   ctx.body = { userId, hobbyId };
 };
 
-const dislikeHobby = async (ctx, next) => {
+const dislikeHobby = async (ctx) => {
   const userId = ctx.token;
-  const hobbyId = ctx.request.body.hobbyId;
+  const { hobbyId } = ctx.request.body;
   // console.log('--userId:', userId);
   // console.log('--hobbyId:', hobbyId);
 

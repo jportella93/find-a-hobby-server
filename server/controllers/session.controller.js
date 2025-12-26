@@ -1,19 +1,18 @@
-getSessionId = async (ctx, next) => {
+const getSessionId = async (ctx) => {
   // console.log('--------', ctx.cookies);
-  const sessionId = ctx.cookies.get('sessionID')
+  const sessionId = ctx.cookies.get('sessionID');
   if (!sessionId) {
     console.log('no sessionId found');
-    ctx.body = 'no sessionId found';
-    ctx.status = 500;
+    ctx.body = { error: 'no sessionId found' };
+    ctx.status = 404;
     return;
   }
   ctx.body = {
-    sessionId
+    sessionId,
   };
   ctx.status = 200;
-  await next();
-}
+};
 
 module.exports = {
   getSessionId,
-}
+};

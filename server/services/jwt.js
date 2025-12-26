@@ -1,19 +1,29 @@
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 
-const secret = process.env.JWT_SECRET;
+// This token is used as a client identifier (and for recommendations), not for authz.
+// Still, in production you should set JWT_SECRET to keep identifiers stable & non-forgeable.
+const secret = process.env.JWT_SECRET || 'dev-secret-change-me';
 
-const createToken = () => jwt.sign({
-  uuid: uuidv4()
-}, secret);
+const createToken = () => jwt.sign(
+  {
+    uuid: uuidv4(),
+  },
+  secret,
+);
 
 module.exports = async (ctx, next) => {
   let token;
 
   try {
-    token = ctx.headers.authorization.split('Bearer ')[1];
-    jwt.verify(token, secret);
-  } catch(e) {
+    const authHeader = ctx.headers.authorization;
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      [, token] = authHeader.split('Bearer ');
+      jwt.verify(token, secret);
+    } else {
+      token = createToken();
+    }
+  } catch (e) {
     token = createToken();
   }
 
@@ -26,6 +36,4 @@ module.exports = async (ctx, next) => {
   ctx.token = token;
 
   await next();
-
-
-}
+};

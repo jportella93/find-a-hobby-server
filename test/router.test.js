@@ -1,13 +1,16 @@
-const server = require('../server/index');
-const request = require('supertest');
-const jwt = require('./jwt');
+jest.mock('../server/models/hobby', () => ({
+  find: jest.fn().mockResolvedValue([]),
+}));
 
-afterEach(()=> {
+const request = require('supertest');
+const server = require('../server/index');
+
+afterAll(() => {
   server.close();
 });
 
 describe('Routes: GET /hobbies/all', () => {
-  it('should respond as expected', async() => {
+  it('should respond as expected', async () => {
     const response = await request(server).get('/hobbies/all');
     expect(response.status).toEqual(200);
     expect(response.type).toEqual('application/json');
@@ -21,7 +24,7 @@ describe('JWT middleware', () => {
 
   test('Should put token on response.headers.x-token', async () => {
     const response = await request(server).get('/hobbies/all');
-    expect(response.headers['x-token']).toBeDefined()
+    expect(response.headers['x-token']).toBeDefined();
   });
 
   test('Should create a valid token', async () => {
@@ -43,4 +46,4 @@ describe('JWT middleware', () => {
 
   test('Should also put the token in ctx.token', () => {
   });
-})
+});
